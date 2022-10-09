@@ -1,0 +1,11 @@
+{
+    "name": "prinsfrank/measurement-unit",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PrinsFrank\\MeasurementUnit\\": "src/"
+        }
+    },
+    "require": {}
+}
