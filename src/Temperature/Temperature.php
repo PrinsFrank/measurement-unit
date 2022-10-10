@@ -32,11 +32,6 @@ abstract class Temperature implements TemperatureInterface
         return $this->toUnit($this->value, Kelvin::class);
     }
 
-    public function toReaumur(): Reaumur
-    {
-        return $this->toUnit($this->value, Reaumur::class);
-    }
-
     /**
      * @template T of Temperature
      * @param class-string<T> $fqn
