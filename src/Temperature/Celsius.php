@@ -1,15 +1,22 @@
 <?php
 declare(strict_types=1);
 
+namespace PrinsFrank\MeasurementUnit\Temperature;
+
 class Celsius extends Temperature
 {
-    public function getSymbol(): string
+    public static function getSymbol(): string
     {
         return '°C';
     }
 
-    public static function toKelvinValue(): float
+    public static function toKelvinValue(float $value): float
     {
-        // TODO: Implement toKelvinFactor() method.
+        return $value + 273.15;
+    }
+
+    public static function fromKelvinValue(float $value): float
+    {
+        return $value - 273.15;
     }
 }

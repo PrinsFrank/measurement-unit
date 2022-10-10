@@ -1,7 +1,10 @@
 <?php
 declare(strict_types=1);
 
-interface MeasurementUnit
-{
+namespace PrinsFrank\MeasurementUnit;
 
+use Stringable;
+
+interface MeasurementUnit extends Stringable
+{
 }

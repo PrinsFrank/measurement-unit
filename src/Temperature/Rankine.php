@@ -1,15 +1,22 @@
 <?php
 declare(strict_types=1);
 
+namespace PrinsFrank\MeasurementUnit\Temperature;
+
 class Rankine extends Temperature
 {
-    public function getSymbol(): string
+    public static function getSymbol(): string
     {
-        return '°Ra';
+        return '°R';
     }
 
-    public static function toKelvinValue(): float
+    public static function toKelvinValue(float $value): float
     {
-        // TODO: Implement toKelvinFactor() method.
+        return $value * 5 / 9;
+    }
+
+    public static function fromKelvinValue(float $value): float
+    {
+        return $value / 5 * 9;
     }
 }

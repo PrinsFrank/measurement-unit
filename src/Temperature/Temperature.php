@@ -1,22 +1,15 @@
 <?php
 declare(strict_types=1);
 
-abstract class Temperature implements MeasurementUnit
+namespace PrinsFrank\MeasurementUnit\Temperature;
+
+abstract class Temperature implements TemperatureInterface
 {
     protected float $value;
 
-    abstract public function getSymbol(): string;
-
-    abstract public static function toKelvinValue(float $value): float;
-
-    final public function __construct(float $value)
+    public function __construct(float $value)
     {
         $this->value = $value;
-    }
-
-    public function __toString(): string
-    {
-        return $this->value . $this->getSymbol();
     }
 
     public function toCelsius(): Celsius
@@ -39,6 +32,11 @@ abstract class Temperature implements MeasurementUnit
         return $this->toUnit($this->value, Kelvin::class);
     }
 
+    public function toReaumur(): Reaumur
+    {
+        return $this->toUnit($this->value, Reaumur::class);
+    }
+
     /**
      * @template T of Temperature
      * @param class-string<T> $fqn
@@ -46,6 +44,11 @@ abstract class Temperature implements MeasurementUnit
      */
     protected function toUnit(float $value, string $fqn): Temperature
     {
-        return new $fqn($value * static::toKelvinValue() / $fqn::toKelvinValue());
+        return new $fqn($fqn::fromKelvinValue(static::toKelvinValue($value)));
+    }
+
+    public function __toString(): string
+    {
+        return $this->value . static::getSymbol();
     }
 }
