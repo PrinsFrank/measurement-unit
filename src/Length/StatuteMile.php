@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Length;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class StatuteMile extends Length
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class StatuteMile extends Length
         return 'mi';
     }
 
-    public static function fromMeterValue(float $value): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 1609.3472;
+        return $arithmeticOperations->divide($value, 1609.3472);
     }
 
-    public static function toMeterValue(float $value): float
+    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value * 1609.3472;
+        return $arithmeticOperations->multiply($value, 1609.3472);
     }
 }

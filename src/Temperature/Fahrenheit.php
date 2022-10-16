@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Temperature;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class Fahrenheit extends Temperature
 {
     public static function getSymbol(): string
@@ -10,13 +12,25 @@ class Fahrenheit extends Temperature
         return '°F';
     }
 
-    public static function toKelvinValue(float $value): float
+    public static function toKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return ($value + 459.67) * 5 / 9;
+        return $arithmeticOperations->divide(
+            $arithmeticOperations->multiply(
+                $arithmeticOperations->add($value, 459.67),
+                5
+            ),
+            9
+        );
     }
 
-    public static function fromKelvinValue(float $value): float
+    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 5 * 9 - 459.67;
+        return $arithmeticOperations->subtract(
+            $arithmeticOperations->multiply(
+                $arithmeticOperations->divide($value, 5),
+                9
+            ),
+            459.67
+        );
     }
 }

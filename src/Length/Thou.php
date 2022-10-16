@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Length;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class Thou extends Length
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class Thou extends Length
         return 'thou';
     }
 
-    public static function fromMeterValue(float $value): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 39370.078740157;
+        return $arithmeticOperations->divide($value, 39370.078740157);
     }
 
-    public static function toMeterValue(float $value): float
+    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value * 39370.078740157;
+        return $arithmeticOperations->multiply($value, 39370.078740157);
     }
 }

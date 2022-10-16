@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Length;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class NauticalMile extends Length
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class NauticalMile extends Length
         return 'nmi';
     }
 
-    public static function fromMeterValue(float $value): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 1852;
+        return $arithmeticOperations->divide($value, 1852);
     }
 
-    public static function toMeterValue(float $value): float
+    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value * 1852;
+        return $arithmeticOperations->multiply($value, 1852);
     }
 }

@@ -3,14 +3,11 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Temperature;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 abstract class Temperature implements TemperatureInterface
 {
-    protected float $value;
-
-    public function __construct(float $value)
-    {
-        $this->value = $value;
-    }
+    public function __construct(protected float $value, protected ArithmeticOperations $arithmeticOperations) { }
 
     public function toCelsius(): Celsius
     {
@@ -39,7 +36,13 @@ abstract class Temperature implements TemperatureInterface
      */
     protected function toUnit(float $value, string $fqn): Temperature
     {
-        return new $fqn($fqn::fromKelvinValue(static::toKelvinValue($value)));
+        return new $fqn(
+            $fqn::fromKelvinValue(
+                static::toKelvinValue($value, $this->arithmeticOperations),
+                $this->arithmeticOperations
+            ),
+            $this->arithmeticOperations
+        );
     }
 
     public function __toString(): string

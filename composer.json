@@ -13,6 +13,10 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "prinsfrank/arithmetic-operations-floating-point": "^0.1.2"
+    },
+    "require": {
+        "prinsfrank/arithmetic-operations-implementation": "^0.1"
     }
 }

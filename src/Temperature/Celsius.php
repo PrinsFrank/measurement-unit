@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Temperature;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class Celsius extends Temperature
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class Celsius extends Temperature
         return '°C';
     }
 
-    public static function toKelvinValue(float $value): float
+    public static function toKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value + 273.15;
+        return $arithmeticOperations->add($value, 273.15);
     }
 
-    public static function fromKelvinValue(float $value): float
+    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value - 273.15;
+        return $arithmeticOperations->subtract($value, 273.15);
     }
 }

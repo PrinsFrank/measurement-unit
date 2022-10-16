@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Length;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class HorseLength extends Length
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class HorseLength extends Length
         return 'horse-length';
     }
 
-    public static function fromMeterValue(float $value): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 2.4;
+        return $arithmeticOperations->divide($value, 2.4);
     }
 
-    public static function toMeterValue(float $value): float
+    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value * 2.4;
+        return $arithmeticOperations->multiply($value, 2.4);
     }
 }

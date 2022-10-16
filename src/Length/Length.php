@@ -3,14 +3,11 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Length;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 abstract class Length implements LengthInterface
 {
-    protected float $value;
-
-    public function __construct(float $value)
-    {
-        $this->value = $value;
-    }
+    public function __construct(protected float $value, protected ArithmeticOperations $arithmeticOperations) { }
 
     public function toFathom(): Fathom
     {
@@ -74,7 +71,7 @@ abstract class Length implements LengthInterface
      */
     protected function toUnit(float $value, string $fqn): Length
     {
-        return new $fqn($fqn::fromMeterValue(static::toMeterValue($value)));
+        return new $fqn($fqn::fromMeterValue(static::toMeterValue($value, $this->arithmeticOperations), $this->arithmeticOperations));
     }
 
     public function __toString(): string

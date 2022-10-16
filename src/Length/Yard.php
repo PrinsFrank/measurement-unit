@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Length;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class Yard extends Length
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class Yard extends Length
         return 'yd';
     }
 
-    public static function fromMeterValue(float $value): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 0.9144;
+        return $arithmeticOperations->divide($value, 0.9144);
     }
 
-    public static function toMeterValue(float $value): float
+    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value * 0.9144;
+        return $arithmeticOperations->multiply($value, 0.9144);
     }
 }

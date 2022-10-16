@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Temperature;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class Rankine extends Temperature
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class Rankine extends Temperature
         return '°R';
     }
 
-    public static function toKelvinValue(float $value): float
+    public static function toKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value * 5 / 9;
+        return $arithmeticOperations->divide($arithmeticOperations->multiply($value, 5), 9);
     }
 
-    public static function fromKelvinValue(float $value): float
+    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 5 * 9;
+        return $arithmeticOperations->multiply($arithmeticOperations->divide($value, 5), 9);
     }
 }

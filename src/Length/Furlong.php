@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Length;
 
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+
 class Furlong extends Length
 {
     public static function getSymbol(): string
@@ -10,13 +12,13 @@ class Furlong extends Length
         return 'for';
     }
 
-    public static function fromMeterValue(float $value): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value / 201.1680;
+        return $arithmeticOperations->divide($value, 201.1680);
     }
 
-    public static function toMeterValue(float $value): float
+    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
     {
-        return $value * 201.1680;
+        return $arithmeticOperations->multiply($value, 201.1680);
     }
 }
