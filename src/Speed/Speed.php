@@ -30,7 +30,7 @@ abstract class Speed implements SpeedInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(float $value, string $fqn): Length
+    protected function toUnit(float $value, string $fqn): Speed
     {
         return new $fqn(
             $fqn::fromMeterPerSecondValue(
