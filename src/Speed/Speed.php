@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace PrinsFrank\MeasurementUnit\Speed;
+
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\MeasurementUnit\Length\Length;
 
