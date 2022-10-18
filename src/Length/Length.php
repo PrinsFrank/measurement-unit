@@ -71,7 +71,13 @@ abstract class Length implements LengthInterface
      */
     protected function toUnit(float $value, string $fqn): Length
     {
-        return new $fqn($fqn::fromMeterValue(static::toMeterValue($value, $this->arithmeticOperations), $this->arithmeticOperations));
+        return new $fqn(
+            $fqn::fromMeterValue(
+                static::toMeterValue($value, $this->arithmeticOperations),
+                $this->arithmeticOperations
+            ),
+            $this->arithmeticOperations
+        );
     }
 
     public function __toString(): string
