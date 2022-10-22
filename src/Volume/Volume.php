@@ -61,7 +61,7 @@ abstract class Volume implements VolumeInterface
     }
 
     /**
-     * @template T of Weight
+     * @template T of Volume
      * @param class-string<T> $fqn
      * @return T
      */
