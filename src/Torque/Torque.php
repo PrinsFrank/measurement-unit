@@ -15,6 +15,11 @@ abstract class Torque implements TorqueInterface
         $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
     }
 
+    public function toNewtonMeter(): NewtonMeter
+    {
+        return $this->toUnit($this->value, NewtonMeter::class);
+    }
+
     /**
      * @template T of Torque
      * @param class-string<T> $fqn
