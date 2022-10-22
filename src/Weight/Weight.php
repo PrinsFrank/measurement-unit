@@ -8,7 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Weight implements WeightInterface
 {
-    private ArithmeticOperationsFloatingPoint|ArithmeticOperations $arithmeticOperations;
+    private ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
