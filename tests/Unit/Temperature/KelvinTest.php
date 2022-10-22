@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\MeasurementUnit\Tests\Unit;
+namespace PrinsFrank\MeasurementUnit\Tests\Unit\Temperature;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\MeasurementUnit\Temperature\Kelvin;
 
 /**
@@ -25,8 +25,7 @@ class KelvinTest extends TestCase
      */
     public function testToKelvinValue(): void
     {
-        static::assertSame(0.0, Kelvin::toKelvinValue(0.0, new ArithmeticOperationsFloatingPoint()));
-        static::assertSame(100.0, Kelvin::toKelvinValue(100.0, new ArithmeticOperationsFloatingPoint()));
+        static::assertSame(42.0, Kelvin::toKelvinValue(42.0, $this->createMock(ArithmeticOperations::class)));
     }
 
     /**
@@ -34,7 +33,6 @@ class KelvinTest extends TestCase
      */
     public function testFromKelvinValue(): void
     {
-        static::assertSame(0.0, Kelvin::fromKelvinValue(0.0, new ArithmeticOperationsFloatingPoint()));
-        static::assertSame(100.0, Kelvin::fromKelvinValue(100.0, new ArithmeticOperationsFloatingPoint()));
+        static::assertSame(42.0, Kelvin::fromKelvinValue(42.0, $this->createMock(ArithmeticOperations::class)));
     }
 }
