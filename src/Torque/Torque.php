@@ -23,8 +23,8 @@ abstract class Torque implements TorqueInterface
     protected function toUnit(float $value, string $fqn): Torque
     {
         return new $fqn(
-            $fqn::fromNewtonMeter(
-                static::toNewtonMeter($value, $this->arithmeticOperations),
+            $fqn::fromNewtonMeterValue(
+                static::toNewtonMeterValue($value, $this->arithmeticOperations),
                 $this->arithmeticOperations
             ),
             $this->arithmeticOperations

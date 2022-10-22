@@ -21,18 +21,18 @@ class NewtonMeterTest extends TestCase
     }
 
     /**
-     * @covers ::fromNewtonMeter
+     * @covers ::fromNewtonMeterValue
      */
     public function testFromNewtonMeter(): void
     {
-        static::assertSame(42.0, NewtonMeter::fromNewtonMeter(42.0, $this->createMock(ArithmeticOperations::class)));
+        static::assertSame(42.0, NewtonMeter::fromNewtonMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
     }
 
     /**
-     * @covers ::toNewtonMeter
+     * @covers ::toNewtonMeterValue
      */
     public function testToNewtonMeter(): void
     {
-        static::assertSame(42.0, NewtonMeter::toNewtonMeter(42.0, $this->createMock(ArithmeticOperations::class)));
+        static::assertSame(42.0, NewtonMeter::toNewtonMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
     }
 }
