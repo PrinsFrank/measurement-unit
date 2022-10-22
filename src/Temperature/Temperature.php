@@ -4,10 +4,16 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Temperature;
 
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 
 abstract class Temperature implements TemperatureInterface
 {
-    public function __construct(protected float $value, protected ArithmeticOperations $arithmeticOperations) { }
+    private ArithmeticOperationsFloatingPoint|ArithmeticOperations $arithmeticOperations;
+
+    public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
+    {
+        $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
+    }
 
     public function toCelsius(): Celsius
     {

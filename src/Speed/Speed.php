@@ -4,11 +4,16 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Speed;
 
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
-use PrinsFrank\MeasurementUnit\Length\Length;
+use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 
 abstract class Speed implements SpeedInterface
 {
-    public function __construct(protected float $value, protected ArithmeticOperations $arithmeticOperations) { }
+    private ArithmeticOperationsFloatingPoint|ArithmeticOperations $arithmeticOperations;
+
+    public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
+    {
+        $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
+    }
 
     public function toKilometerPerHour(): KilometerPerHour
     {
