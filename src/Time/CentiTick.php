@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\MeasurementUnit\Tests\Unit\Time;
+namespace PrinsFrank\MeasurementUnit\Time;
 
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
