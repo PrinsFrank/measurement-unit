@@ -17,6 +17,7 @@
     },
     "require": {
         "prinsfrank/arithmetic-operations-implementation": "^0.1",
-        "prinsfrank/arithmetic-operations-floating-point": "^0.1.2"
+        "prinsfrank/arithmetic-operations-floating-point": "^0.1.2",
+        "prinsfrank/arithmetic-operations": "^0.1.0"
     }
 }
