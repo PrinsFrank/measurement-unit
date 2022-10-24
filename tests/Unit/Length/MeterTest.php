@@ -21,7 +21,7 @@ class MeterTest extends TestCase
     }
 
     /**
-     * @covers ::toMeterPerSecondValue
+     * @covers ::toMeterValue
      */
     public function testToMeterPerSecondValue(): void
     {
@@ -29,7 +29,7 @@ class MeterTest extends TestCase
     }
 
     /**
-     * @covers ::fromMeterPerSecondValue
+     * @covers ::fromMeterValue
      */
     public function testFromMeterPerSecondValue(): void
     {
