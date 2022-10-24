@@ -1,5 +1,9 @@
 # measurement-unit
 
+![GitHub](https://img.shields.io/github/license/prinsfrank/measurement-unit)
+![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/measurement-unit)
+[![codecov](https://codecov.io/gh/PrinsFrank/standards/branch/main/graph/badge.svg?token=9O3VB563MU)](https://codecov.io/gh/PrinsFrank/measurement-unit)
+
 ## Installation
 
 To use this package in your project, run the following command:
