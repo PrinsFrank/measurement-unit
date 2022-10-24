@@ -4,3 +4,6 @@
 
 # PHPUnit
 .phpunit.result.cache
+
+#PHPCSFixer
+.php-cs-fixer.cache
