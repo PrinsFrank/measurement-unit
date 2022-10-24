@@ -25,7 +25,7 @@ abstract class Time implements TimeInterface
         return $this->toUnit($this->value, Minute::class);
     }
 
-    public function toHour(): Second
+    public function toHour(): Hour
     {
         return $this->toUnit($this->value, Hour::class);
     }
