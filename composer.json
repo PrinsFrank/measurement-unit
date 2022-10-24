@@ -2,6 +2,7 @@
     "name": "prinsfrank/measurement-unit",
     "type": "library",
     "license": "MIT",
+    "description": "A collection of measurement units for easy conversion",
     "autoload": {
         "psr-4": {
             "PrinsFrank\\MeasurementUnit\\": "src/"
