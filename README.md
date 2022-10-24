@@ -1,4 +1,6 @@
-# measurement-unit
+![Banner](docs/images/banner.png)
+
+# Measurement-unit
 
 ![GitHub](https://img.shields.io/github/license/prinsfrank/measurement-unit)
 ![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/measurement-unit)
