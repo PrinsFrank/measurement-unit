@@ -29,7 +29,7 @@ class KelvinTest extends TestCase
     }
 
     /**
-     * @covers ::toKelvinValue
+     * @covers ::fromKelvinValue
      */
     public function testFromKelvinValue(): void
     {
