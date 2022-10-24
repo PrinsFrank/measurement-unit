@@ -21,5 +21,15 @@
         "prinsfrank/arithmetic-operations-implementation": "^0.1",
         "prinsfrank/arithmetic-operations-floating-point": "^0.1.2",
         "prinsfrank/arithmetic-operations": "^0.1.0"
+    },
+    "scripts": {
+        "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
+        "cs:fix": "php-cs-fixer fix --allow-risky=yes",
+        "stan": "phpstan analyse",
+        "unit": "phpunit --testsuite=Unit",
+        "test": [
+            "@unit",
+            "@cs"
+        ]
     }
 }
