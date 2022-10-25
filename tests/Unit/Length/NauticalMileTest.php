@@ -1,0 +1,50 @@
+<?php
+declare(strict_types=1);
+
+namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
+
+use PHPUnit\Framework\TestCase;
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+use PrinsFrank\MeasurementUnit\Length\NauticalMile;
+
+/**
+ * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\NauticalMile
+ */
+class NauticalMileTest extends TestCase
+{
+    /**
+     * @covers ::getSymbol
+     */
+    public function testGetSymbol(): void
+    {
+        static::assertSame('nmi', NauticalMile::getSymbol());
+    }
+
+    /**
+     * @covers ::fromMeterValue
+     */
+    public function testFromMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('divide')
+                             ->with(42.0, 1852)
+                             ->willReturn(0.02267818574);
+
+        static::assertSame(0.02267818574, NauticalMile::fromMeterValue(42.0, $arithmeticOperations));
+    }
+
+    /**
+     * @covers ::toMeterValue
+     */
+    public function testToMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('multiply')
+                             ->with(42.0, 1852)
+                             ->willReturn(77784.0);
+
+        static::assertSame(77784.0, NauticalMile::toMeterValue(42.0, $arithmeticOperations));
+    }
+}

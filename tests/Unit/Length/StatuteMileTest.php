@@ -1,0 +1,50 @@
+<?php
+declare(strict_types=1);
+
+namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
+
+use PHPUnit\Framework\TestCase;
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+use PrinsFrank\MeasurementUnit\Length\StatuteMile;
+
+/**
+ * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\StatuteMile
+ */
+class StatuteMileTest extends TestCase
+{
+    /**
+     * @covers ::getSymbol
+     */
+    public function testGetSymbol(): void
+    {
+        static::assertSame('mi', StatuteMile::getSymbol());
+    }
+
+    /**
+     * @covers ::fromMeterValue
+     */
+    public function testFromMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('divide')
+                             ->with(42.0, 1609.3472)
+                             ->willReturn(0.02609753818);
+
+        static::assertSame(0.02609753818, StatuteMile::fromMeterValue(42.0, $arithmeticOperations));
+    }
+
+    /**
+     * @covers ::toMeterValue
+     */
+    public function testToMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('multiply')
+                             ->with(42.0, 1609.3472)
+                             ->willReturn(67592.5824);
+
+        static::assertSame(67592.5824, StatuteMile::toMeterValue(42.0, $arithmeticOperations));
+    }
+}

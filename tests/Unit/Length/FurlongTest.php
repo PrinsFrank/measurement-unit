@@ -1,0 +1,50 @@
+<?php
+declare(strict_types=1);
+
+namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
+
+use PHPUnit\Framework\TestCase;
+use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+use PrinsFrank\MeasurementUnit\Length\Furlong;
+
+/**
+ * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\Furlong
+ */
+class FurlongTest extends TestCase
+{
+    /**
+     * @covers ::getSymbol
+     */
+    public function testGetSymbol(): void
+    {
+        static::assertSame('for', Furlong::getSymbol());
+    }
+
+    /**
+     * @covers ::fromMeterValue
+     */
+    public function testFromMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('divide')
+                             ->with(42.0, 201.1680)
+                             ->willReturn(0.20878072059);
+
+        static::assertSame(0.20878072059, Furlong::fromMeterValue(42.0, $arithmeticOperations));
+    }
+
+    /**
+     * @covers ::toMeterValue
+     */
+    public function testToMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('multiply')
+                             ->with(42.0, 201.1680)
+                             ->willReturn(8449.056);
+
+        static::assertSame(8449.056, Furlong::toMeterValue(42.0, $arithmeticOperations));
+    }
+}
