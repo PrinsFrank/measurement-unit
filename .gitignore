@@ -4,6 +4,7 @@
 
 # PHPUnit
 .phpunit.result.cache
+coverage.xml
 
 #PHPCSFixer
 .php-cs-fixer.cache
