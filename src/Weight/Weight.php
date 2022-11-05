@@ -37,7 +37,6 @@ abstract class Weight implements WeightInterface
      */
     protected function toUnit(string $fqn): Weight
     {
-        /** @var Weight $fqn */
         return $fqn::fromKilogramValue($this->toKilogramValue(), $this->arithmeticOperations);
     }
 
