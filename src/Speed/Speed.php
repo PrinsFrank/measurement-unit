@@ -31,7 +31,7 @@ abstract class Speed implements SpeedInterface
     }
 
     /**
-     * @template T of Speed
+     * @template T of SpeedInterface
      * @param class-string<T> $fqn
      * @return T
      */

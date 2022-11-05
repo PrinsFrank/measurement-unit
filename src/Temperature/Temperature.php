@@ -36,7 +36,7 @@ abstract class Temperature implements TemperatureInterface
     }
 
     /**
-     * @template T of Temperature
+     * @template T of TemperatureInterface
      * @param class-string<T> $fqn
      * @return T
      */

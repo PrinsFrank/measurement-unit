@@ -76,7 +76,7 @@ abstract class Length implements LengthInterface
     }
 
     /**
-     * @template T of Length
+     * @template T of LengthInterface
      * @param class-string<T> $fqn
      * @return T
      */

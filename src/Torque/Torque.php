@@ -21,7 +21,7 @@ abstract class Torque implements TorqueInterface
     }
 
     /**
-     * @template T of Torque
+     * @template T of TorqueInterface
      * @param class-string<T> $fqn
      * @return T
      */
