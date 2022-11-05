@@ -31,7 +31,7 @@ abstract class Weight implements WeightInterface
     }
 
     /**
-     * @template T of WeightInterface
+     * @template T of Weight
      * @param class-string<T> $fqn
      * @return T
      */

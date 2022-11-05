@@ -46,7 +46,7 @@ abstract class Time implements TimeInterface
     }
 
     /**
-     * @template T of TimeInterface
+     * @template T of Time
      * @param class-string<T> $fqn
      * @return T
      */
