@@ -12,9 +12,9 @@ class CubicInch extends Volume
         return 'in3';
     }
 
-    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->multiply($value, 61023.744095), $arithmeticOperations);
+        return new self($arithmeticOperations->multiply($value, 61023.744095), $arithmeticOperations);
     }
 
     public function toCubicMeterValue(): float

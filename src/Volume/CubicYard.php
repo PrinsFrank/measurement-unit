@@ -12,9 +12,9 @@ class CubicYard extends Volume
         return 'yd3';
     }
 
-    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->multiply($value, 0.764555), $arithmeticOperations);
+        return new self($arithmeticOperations->multiply($value, 0.764555), $arithmeticOperations);
     }
 
     public function toCubicMeterValue(): float

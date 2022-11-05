@@ -12,9 +12,9 @@ class Pint extends Volume
         return 'pt';
     }
 
-    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->multiply($value, 0.000473176), $arithmeticOperations);
+        return new self($arithmeticOperations->multiply($value, 0.000473176), $arithmeticOperations);
     }
 
     public function toCubicMeterValue(): float

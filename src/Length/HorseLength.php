@@ -12,9 +12,9 @@ class HorseLength extends Length
         return 'horse-length';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 2.4), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 2.4), $arithmeticOperations);
     }
 
     public function toMeterValue(): float

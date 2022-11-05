@@ -12,9 +12,9 @@ class MilesPerHour extends Speed
         return 'mph';
     }
 
-    public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 0.44704), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 0.44704), $arithmeticOperations);
     }
 
     public function toMeterPerSecondValue(): float

@@ -12,9 +12,9 @@ class Liter extends Volume
         return 'l';
     }
 
-    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->multiply($value, 0.001), $arithmeticOperations);
+        return new self($arithmeticOperations->multiply($value, 0.001), $arithmeticOperations);
     }
 
     public function toCubicMeterValue(): float

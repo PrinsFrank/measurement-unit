@@ -12,9 +12,9 @@ class MeterPerSecond extends Speed
         return 'm/s';
     }
 
-    public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($value, $arithmeticOperations);
+        return new self($value, $arithmeticOperations);
     }
 
     public function toMeterPerSecondValue(): float

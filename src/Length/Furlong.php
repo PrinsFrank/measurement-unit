@@ -12,9 +12,9 @@ class Furlong extends Length
         return 'for';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 201.1680), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 201.1680), $arithmeticOperations);
     }
 
     public function toMeterValue(): float

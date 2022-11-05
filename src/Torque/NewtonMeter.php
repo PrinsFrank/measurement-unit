@@ -12,9 +12,9 @@ class NewtonMeter extends Torque
         return 'N⋅m';
     }
 
-    public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($value, $arithmeticOperations);
+        return new self($value, $arithmeticOperations);
     }
 
     public function toNewtonMeterValue(): float

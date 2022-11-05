@@ -12,9 +12,9 @@ class MetricTon extends Weight
         return 't';
     }
 
-    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 1000), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 1000), $arithmeticOperations);
     }
 
     public function toKilogramValue(): float

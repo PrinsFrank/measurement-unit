@@ -12,9 +12,9 @@ class Mile extends Length
         return 'mi';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 1609.344), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 1609.344), $arithmeticOperations);
     }
 
     public function toMeterValue(): float

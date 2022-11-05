@@ -12,9 +12,9 @@ class FluidDram extends Volume
         return 'dr';
     }
 
-    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->multiply($value, 0.0000036966912), $arithmeticOperations);
+        return new self($arithmeticOperations->multiply($value, 0.0000036966912), $arithmeticOperations);
     }
 
     public function toCubicMeterValue(): float

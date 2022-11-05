@@ -12,9 +12,9 @@ class NauticalMile extends Length
         return 'nmi';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 1852), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 1852), $arithmeticOperations);
     }
 
     public function toMeterValue(): float

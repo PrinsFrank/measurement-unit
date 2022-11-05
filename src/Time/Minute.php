@@ -12,9 +12,9 @@ class Minute extends Time
         return 'm';
     }
 
-    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 60), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 60), $arithmeticOperations);
     }
 
     public function toSecondValue(): float

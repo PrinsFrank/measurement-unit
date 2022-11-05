@@ -12,9 +12,15 @@ class Rankine extends Temperature
         return '°R';
     }
 
-    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->multiply($arithmeticOperations->divide($value, 5), 9), $arithmeticOperations);
+        return new self(
+            $arithmeticOperations->multiply(
+                $arithmeticOperations->divide($value, 5),
+                9
+            ),
+            $arithmeticOperations
+        );
     }
 
     public function toKelvinValue(): float

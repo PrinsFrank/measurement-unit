@@ -12,9 +12,9 @@ class Yard extends Length
         return 'yd';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 0.9144), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 0.9144), $arithmeticOperations);
     }
 
     public function toMeterValue(): float

@@ -12,9 +12,9 @@ class Pound extends Weight
         return 'lb';
     }
 
-    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->divide($value, 0.453592), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 0.453592), $arithmeticOperations);
     }
 
     public function toKilogramValue(): float

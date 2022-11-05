@@ -12,9 +12,9 @@ class CentiTick extends Time
         return 'ct';
     }
 
-    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
+    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new static($arithmeticOperations->multiply($value, 0.864), $arithmeticOperations);
+        return new self($arithmeticOperations->multiply($value, 0.864), $arithmeticOperations);
     }
 
     public function toSecondValue(): float
