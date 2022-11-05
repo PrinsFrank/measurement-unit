@@ -16,6 +16,7 @@ use PrinsFrank\MeasurementUnit\Volume\Quart;
 use PrinsFrank\MeasurementUnit\Volume\TableSpoon;
 use PrinsFrank\MeasurementUnit\Volume\Volume;
 
+/** @covers Volume */
 class VolumeTest extends TestCase
 {
     /** @var array<class-string<Volume>> */

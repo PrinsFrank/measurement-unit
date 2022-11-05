@@ -13,6 +13,7 @@ use PrinsFrank\MeasurementUnit\Time\Second;
 use PrinsFrank\MeasurementUnit\Time\Tick;
 use PrinsFrank\MeasurementUnit\Time\Time;
 
+/** @covers Time */
 class TimeTest extends TestCase
 {
     /** @var array<class-string<Time>> */

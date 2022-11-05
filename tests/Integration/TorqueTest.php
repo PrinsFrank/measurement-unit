@@ -8,6 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 use PrinsFrank\MeasurementUnit\Torque\NewtonMeter;
 use PrinsFrank\MeasurementUnit\Torque\Torque;
 
+/** @covers Torque */
 class TorqueTest extends TestCase
 {
     /** @var array<class-string<Torque>> */

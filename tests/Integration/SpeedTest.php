@@ -5,12 +5,12 @@ namespace PrinsFrank\MeasurementUnit\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
-use PrinsFrank\MeasurementUnit\Length\Length;
 use PrinsFrank\MeasurementUnit\Speed\KilometerPerHour;
 use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
 use PrinsFrank\MeasurementUnit\Speed\MilesPerHour;
 use PrinsFrank\MeasurementUnit\Speed\Speed;
 
+/** @covers Speed */
 class SpeedTest extends TestCase
 {
     /** @var array<class-string<Speed>> */
