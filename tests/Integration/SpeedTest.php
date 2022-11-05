@@ -25,7 +25,7 @@ class SpeedTest extends TestCase
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
 
-        static::assertSame(42.0, $speed::fromMeterPerSecondValue($speed::toMeterPerSecondValue(42.0, $arithmetics), $arithmetics));
+        static::assertEquals($speed, $speed::fromMeterPerSecondValue($speed->toMeterPerSecondValue(), $arithmetics));
     }
 
     public function speedInstances(): iterable

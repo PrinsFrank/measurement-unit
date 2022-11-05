@@ -12,13 +12,13 @@ class Second extends Time
         return 's';
     }
 
-    public static function toSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $value;
+        return new static($value, $arithmeticOperations);
     }
 
-    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toSecondValue(): float
     {
-        return $value;
+        return $this->value;
     }
 }

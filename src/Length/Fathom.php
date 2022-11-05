@@ -12,13 +12,13 @@ class Fathom extends Length
         return 'ftm';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->divide($value, 1.8288);
+        return new static($arithmeticOperations->divide($value, 1.8288), $arithmeticOperations);
     }
 
-    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toMeterValue(): float
     {
-        return $arithmeticOperations->multiply($value, 1.8288);
+        return $this->arithmeticOperations->multiply($this->value, 1.8288);
     }
 }

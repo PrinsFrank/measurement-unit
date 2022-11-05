@@ -8,7 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Weight implements WeightInterface
 {
-    private ArithmeticOperations $arithmeticOperations;
+    protected ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
@@ -17,17 +17,17 @@ abstract class Weight implements WeightInterface
 
     public function toKilogram(): Kilogram
     {
-        return $this->toUnit($this->value, Kilogram::class);
+        return $this->toUnit(Kilogram::class);
     }
 
     public function toMetricTon(): MetricTon
     {
-        return $this->toUnit($this->value, MetricTon::class);
+        return $this->toUnit(MetricTon::class);
     }
 
     public function toPound(): Pound
     {
-        return $this->toUnit($this->value, Pound::class);
+        return $this->toUnit(Pound::class);
     }
 
     /**
@@ -35,15 +35,10 @@ abstract class Weight implements WeightInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(float $value, string $fqn): Weight
+    protected function toUnit(string $fqn): Weight
     {
-        return new $fqn(
-            $fqn::fromKilogramValue(
-                static::toKilogramValue($value, $this->arithmeticOperations),
-                $this->arithmeticOperations
-            ),
-            $this->arithmeticOperations
-        );
+        /** @var Weight $fqn */
+        return $fqn::fromKilogramValue($this->toKilogramValue(), $this->arithmeticOperations);
     }
 
     public function __toString(): string

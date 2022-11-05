@@ -12,13 +12,13 @@ class Kelvin extends Temperature
         return 'K';
     }
 
-    public static function toKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $value;
+        return new static($value);
     }
 
-    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toKelvinValue(): float
     {
-        return $value;
+        return $this->value;
     }
 }

@@ -10,7 +10,7 @@ interface LengthInterface extends MeasurementUnit
 {
     public static function getSymbol(): string;
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static;
 
-    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public function toMeterValue(): float;
 }

@@ -8,7 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Volume implements VolumeInterface
 {
-    private ArithmeticOperations $arithmeticOperations;
+    protected ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
@@ -17,47 +17,47 @@ abstract class Volume implements VolumeInterface
 
     public function toCubicInch(): CubicInch
     {
-        return $this->toUnit($this->value, CubicInch::class);
+        return $this->toUnit(CubicInch::class);
     }
 
     public function toCubicMeter(): CubicMeter
     {
-        return $this->toUnit($this->value, CubicMeter::class);
+        return $this->toUnit(CubicMeter::class);
     }
 
     public function toCubicYard(): CubicYard
     {
-        return $this->toUnit($this->value, CubicYard::class);
+        return $this->toUnit(CubicYard::class);
     }
 
     public function toFluidDram(): FluidDram
     {
-        return $this->toUnit($this->value, FluidDram::class);
+        return $this->toUnit(FluidDram::class);
     }
 
     public function toFluidOunce(): FluidOunce
     {
-        return $this->toUnit($this->value, FluidOunce::class);
+        return $this->toUnit(FluidOunce::class);
     }
 
     public function toLiter(): Liter
     {
-        return $this->toUnit($this->value, Liter::class);
+        return $this->toUnit(Liter::class);
     }
 
     public function toPint(): Pint
     {
-        return $this->toUnit($this->value, Pint::class);
+        return $this->toUnit(Pint::class);
     }
 
     public function toQuart(): Quart
     {
-        return $this->toUnit($this->value, Quart::class);
+        return $this->toUnit(Quart::class);
     }
 
     public function toTableSpoon(): TableSpoon
     {
-        return $this->toUnit($this->value, TableSpoon::class);
+        return $this->toUnit(TableSpoon::class);
     }
 
     /**
@@ -65,15 +65,10 @@ abstract class Volume implements VolumeInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(float $value, string $fqn): Volume
+    protected function toUnit(string $fqn): Volume
     {
-        return new $fqn(
-            $fqn::fromCubicMeterValue(
-                static::toCubicMeterValue($value, $this->arithmeticOperations),
-                $this->arithmeticOperations
-            ),
-            $this->arithmeticOperations
-        );
+        /** @var Volume $fqn */
+        return $fqn::fromCubicMeterValue($this->toCubicMeterValue(), $this->arithmeticOperations);
     }
 
     public function __toString(): string

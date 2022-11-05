@@ -12,13 +12,13 @@ class Celsius extends Temperature
         return '°C';
     }
 
-    public static function toKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->add($value, 273.15);
+        return new static($arithmeticOperations->subtract($value, 273.15), $arithmeticOperations);
     }
 
-    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toKelvinValue(): float
     {
-        return $arithmeticOperations->subtract($value, 273.15);
+        return $this->arithmeticOperations->add($this->value, 273.15);
     }
 }

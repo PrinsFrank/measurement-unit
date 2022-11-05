@@ -31,7 +31,7 @@ class TimeTest extends TestCase
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
 
-        static::assertSame(42.0, $time::fromSecondValue($time::toSecondValue(42.0, $arithmetics), $arithmetics));
+        static::assertEquals($time, $time::fromSecondValue($time->toSecondValue(), $arithmetics));
     }
 
     public function timeInstances(): iterable

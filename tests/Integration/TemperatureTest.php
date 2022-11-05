@@ -27,7 +27,7 @@ class TemperatureTest extends TestCase
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
 
-        static::assertEqualsWithDelta(42.0, $temperature::fromKelvinValue($temperature::toKelvinValue(42.0, $arithmetics), $arithmetics), 0.000001);
+        static::assertEqualsWithDelta($temperature, $temperature::fromKelvinValue($temperature->toKelvinValue(), $arithmetics), 0.000001);
     }
 
     public function temperatureInstances(): iterable

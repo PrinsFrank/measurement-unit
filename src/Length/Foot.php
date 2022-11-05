@@ -12,13 +12,13 @@ class Foot extends Length
         return 'ft';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->divide($value, 0.3048);
+        return new static($arithmeticOperations->divide($value, 0.3048), $arithmeticOperations);
     }
 
-    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toMeterValue(): float
     {
-        return $arithmeticOperations->multiply($value, 0.3048);
+        return $this->arithmeticOperations->multiply($this->value, 0.3048);
     }
 }

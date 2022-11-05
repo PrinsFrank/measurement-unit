@@ -9,7 +9,7 @@ interface WeightInterface
 {
     public static function getSymbol(): string;
 
-    public static function toKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): static;
 
-    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public function toKilogramValue(): float;
 }

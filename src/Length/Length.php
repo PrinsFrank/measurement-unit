@@ -8,66 +8,71 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Length implements LengthInterface
 {
-    private ArithmeticOperations $arithmeticOperations;
+    protected ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
         $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
     }
 
+    public function getArithmeticOperations(): ArithmeticOperations
+    {
+        return $this->arithmeticOperations;
+    }
+
     public function toFathom(): Fathom
     {
-        return $this->toUnit($this->value, Fathom::class);
+        return $this->toUnit(Fathom::class);
     }
 
     public function toFoot(): Foot
     {
-        return $this->toUnit($this->value, Foot::class);
+        return $this->toUnit(Foot::class);
     }
 
     public function toFurlong(): Furlong
     {
-        return $this->toUnit($this->value, Furlong::class);
+        return $this->toUnit(Furlong::class);
     }
 
     public function toHorseLength(): HorseLength
     {
-        return $this->toUnit($this->value, HorseLength::class);
+        return $this->toUnit(HorseLength::class);
     }
 
     public function toInch(): Inch
     {
-        return $this->toUnit($this->value, Inch::class);
+        return $this->toUnit(Inch::class);
     }
 
     public function toMeter(): Meter
     {
-        return $this->toUnit($this->value, Meter::class);
+        return $this->toUnit(Meter::class);
     }
 
     public function toMile(): Mile
     {
-        return $this->toUnit($this->value, Mile::class);
+        return $this->toUnit(Mile::class);
     }
 
     public function toNauticalMile(): NauticalMile
     {
-        return $this->toUnit($this->value, NauticalMile::class);
+        return $this->toUnit(NauticalMile::class);
     }
 
     public function toStatuteMile(): StatuteMile
     {
-        return $this->toUnit($this->value, StatuteMile::class);
+        return $this->toUnit(StatuteMile::class);
     }
 
     public function toThou(): Thou
     {
-        return $this->toUnit($this->value, Thou::class);
+        return $this->toUnit(Thou::class);
     }
 
     public function toYard(): Yard
     {
-        return $this->toUnit($this->value, Yard::class);
+        return $this->toUnit(Yard::class);
     }
 
     /**
@@ -75,15 +80,10 @@ abstract class Length implements LengthInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(float $value, string $fqn): Length
+    protected function toUnit(string $fqn): Length
     {
-        return new $fqn(
-            $fqn::fromMeterValue(
-                static::toMeterValue($value, $this->arithmeticOperations),
-                $this->arithmeticOperations
-            ),
-            $this->arithmeticOperations
-        );
+        /** @var Length $fqn */
+        return $fqn::fromMeterValue($this->toMeterValue(), $this->arithmeticOperations);
     }
 
     public function __toString(): string

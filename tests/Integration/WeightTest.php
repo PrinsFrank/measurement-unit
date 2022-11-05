@@ -25,7 +25,7 @@ class WeightTest extends TestCase
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
 
-        static::assertSame(42.0, $weight::fromKilogramValue($weight::toKilogramValue(42.0, $arithmetics), $arithmetics));
+        static::assertEquals($weight, $weight::fromKilogramValue($weight->toKilogramValue(), $arithmetics));
     }
 
     public function weightInstances(): iterable

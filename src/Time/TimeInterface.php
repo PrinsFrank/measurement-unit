@@ -9,7 +9,7 @@ interface TimeInterface
 {
     public static function getSymbol(): string;
 
-    public static function toSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static;
 
-    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public function toSecondValue(): float;
 }

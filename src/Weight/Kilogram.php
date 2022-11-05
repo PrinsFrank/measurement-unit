@@ -12,13 +12,13 @@ class Kilogram extends Weight
         return 'kg';
     }
 
-    public static function toKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $value;
+        return new static($value, $arithmeticOperations);
     }
 
-    public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toKilogramValue(): float
     {
-        return $value;
+        return $this->value;
     }
 }

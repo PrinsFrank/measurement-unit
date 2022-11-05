@@ -12,13 +12,13 @@ class CubicMeter extends Volume
         return 'm3';
     }
 
-    public static function toCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $value;
+        return new static($value, $arithmeticOperations);
     }
 
-    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toCubicMeterValue(): float
     {
-        return $value;
+        return $this->value;
     }
 }

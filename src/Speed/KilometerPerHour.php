@@ -12,13 +12,13 @@ class KilometerPerHour extends Speed
         return 'km/h';
     }
 
-    public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->divide($value, 0.277778);
+        return new static($arithmeticOperations->divide($value, 0.277778), $arithmeticOperations);
     }
 
-    public static function toMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toMeterPerSecondValue(): float
     {
-        return $arithmeticOperations->multiply($value, 0.277778);
+        return $this->arithmeticOperations->multiply($this->value, 0.277778);
     }
 }

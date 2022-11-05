@@ -8,7 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Temperature implements TemperatureInterface
 {
-    private ArithmeticOperations $arithmeticOperations;
+    protected ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
@@ -17,22 +17,22 @@ abstract class Temperature implements TemperatureInterface
 
     public function toCelsius(): Celsius
     {
-        return $this->toUnit($this->value, Celsius::class);
+        return $this->toUnit(Celsius::class);
     }
 
     public function toFahrenheit(): Fahrenheit
     {
-        return $this->toUnit($this->value, Fahrenheit::class);
+        return $this->toUnit(Fahrenheit::class);
     }
 
     public function toRankine(): Rankine
     {
-        return $this->toUnit($this->value, Rankine::class);
+        return $this->toUnit(Rankine::class);
     }
 
     public function toKelvin(): Kelvin
     {
-        return $this->toUnit($this->value, Kelvin::class);
+        return $this->toUnit(Kelvin::class);
     }
 
     /**
@@ -40,15 +40,10 @@ abstract class Temperature implements TemperatureInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(float $value, string $fqn): Temperature
+    protected function toUnit(string $fqn): Temperature
     {
-        return new $fqn(
-            $fqn::fromKelvinValue(
-                static::toKelvinValue($value, $this->arithmeticOperations),
-                $this->arithmeticOperations
-            ),
-            $this->arithmeticOperations
-        );
+        /** @var Temperature $fqn */
+        return $fqn::fromKelvinValue($this->toKelvinValue(), $this->arithmeticOperations);
     }
 
     public function __toString(): string

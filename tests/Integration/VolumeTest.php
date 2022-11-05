@@ -37,7 +37,7 @@ class VolumeTest extends TestCase
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
 
-        static::assertSame(42.0, $volume::fromCubicMeterValue($volume::toCubicMeterValue(42.0, $arithmetics), $arithmetics));
+        static::assertEquals($volume, $volume::fromCubicMeterValue($volume->toCubicMeterValue(), $arithmetics));
     }
 
     public function volumeInstances(): iterable

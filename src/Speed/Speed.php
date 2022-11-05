@@ -8,7 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Speed implements SpeedInterface
 {
-    private ArithmeticOperations $arithmeticOperations;
+    protected ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
@@ -17,17 +17,17 @@ abstract class Speed implements SpeedInterface
 
     public function toKilometerPerHour(): KilometerPerHour
     {
-        return $this->toUnit($this->value, KilometerPerHour::class);
+        return $this->toUnit(KilometerPerHour::class);
     }
 
     public function toMeterPerSecond(): MeterPerSecond
     {
-        return $this->toUnit($this->value, MeterPerSecond::class);
+        return $this->toUnit(MeterPerSecond::class);
     }
 
     public function toMilesPerHour(): MilesPerHour
     {
-        return $this->toUnit($this->value, MilesPerHour::class);
+        return $this->toUnit(MilesPerHour::class);
     }
 
     /**
@@ -35,15 +35,10 @@ abstract class Speed implements SpeedInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(float $value, string $fqn): Speed
+    protected function toUnit(string $fqn): Speed
     {
-        return new $fqn(
-            $fqn::fromMeterPerSecondValue(
-                static::toMeterPerSecondValue($value, $this->arithmeticOperations),
-                $this->arithmeticOperations
-            ),
-            $this->arithmeticOperations
-        );
+        /** @var Speed $fqn */
+        return $fqn::fromMeterPerSecondValue($this->toMeterPerSecondValue(), $this->arithmeticOperations);
     }
 
     public function __toString(): string

@@ -12,13 +12,13 @@ class Day extends Time
         return 'd';
     }
 
-    public static function toSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->multiply($value, 86400);
+        return new static($arithmeticOperations->divide($value, 86400), $arithmeticOperations);
     }
 
-    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toSecondValue(): float
     {
-        return $arithmeticOperations->divide($value, 86400);
+        return $this->arithmeticOperations->multiply($this->value, 86400);
     }
 }

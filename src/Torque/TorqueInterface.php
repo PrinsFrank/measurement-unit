@@ -9,7 +9,7 @@ interface TorqueInterface
 {
     public static function getSymbol(): string;
 
-    public static function toNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static;
 
-    public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public function toNewtonMeterValue(): float;
 }

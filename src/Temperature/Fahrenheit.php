@@ -12,25 +12,28 @@ class Fahrenheit extends Temperature
         return '°F';
     }
 
-    public static function toKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->divide(
-            $arithmeticOperations->multiply(
-                $arithmeticOperations->add($value, 459.67),
-                5
+        return new static(
+            $arithmeticOperations->subtract(
+                $arithmeticOperations->multiply(
+                    $arithmeticOperations->divide($value, 5),
+                    9
+                ),
+                459.67
             ),
-            9
+            $arithmeticOperations
         );
     }
 
-    public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toKelvinValue(): float
     {
-        return $arithmeticOperations->subtract(
-            $arithmeticOperations->multiply(
-                $arithmeticOperations->divide($value, 5),
-                9
+        return $this->arithmeticOperations->divide(
+            $this->arithmeticOperations->multiply(
+                $this->arithmeticOperations->add($this->value, 459.67),
+                5
             ),
-            459.67
+            9
         );
     }
 }

@@ -9,7 +9,7 @@ interface VolumeInterface
 {
     public static function getSymbol(): string;
 
-    public static function toCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static;
 
-    public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float;
+    public function toCubicMeterValue(): float;
 }

@@ -21,7 +21,7 @@ class TorqueTest extends TestCase
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
 
-        static::assertSame(42.0, $torque::fromNewtonMeterValue($torque::toNewtonMeterValue(42.0, $arithmetics), $arithmetics));
+        static::assertEquals($torque, $torque::fromNewtonMeterValue($torque->toNewtonMeterValue(), $arithmetics));
     }
 
     public function torqueInstances(): iterable

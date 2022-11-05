@@ -12,13 +12,13 @@ class Hour extends Time
         return 'h';
     }
 
-    public static function toSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->multiply($value, 3600);
+        return new static($arithmeticOperations->divide($value, 3600), $arithmeticOperations);
     }
 
-    public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toSecondValue(): float
     {
-        return $arithmeticOperations->divide($value, 3600);
+        return $this->arithmeticOperations->multiply($this->value, 3600);
     }
 }

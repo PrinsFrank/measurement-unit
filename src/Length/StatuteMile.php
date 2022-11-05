@@ -12,13 +12,13 @@ class StatuteMile extends Length
         return 'mi';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $arithmeticOperations->divide($value, 1609.3472);
+        return new static($arithmeticOperations->divide($value, 1609.3472), $arithmeticOperations);
     }
 
-    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toMeterValue(): float
     {
-        return $arithmeticOperations->multiply($value, 1609.3472);
+        return $this->arithmeticOperations->multiply($this->value, 1609.3472);
     }
 }

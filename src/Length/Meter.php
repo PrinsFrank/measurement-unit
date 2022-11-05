@@ -12,13 +12,13 @@ class Meter extends Length
         return 'm';
     }
 
-    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return $value;
+        return new static($value, $arithmeticOperations);
     }
 
-    public static function toMeterValue(float $value, ArithmeticOperations $arithmeticOperations): float
+    public function toMeterValue(): float
     {
-        return $value;
+        return $this->value;
     }
 }
