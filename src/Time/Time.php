@@ -35,16 +35,6 @@ abstract class Time implements TimeInterface
         return $this->toUnit(Day::class);
     }
 
-    public function toTick(): Tick
-    {
-        return $this->toUnit(Tick::class);
-    }
-
-    public function toCentiTick(): CentiTick
-    {
-        return $this->toUnit(CentiTick::class);
-    }
-
     /**
      * @template T of Time
      * @param class-string<T> $fqn
