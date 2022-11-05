@@ -21,18 +21,23 @@ class MeterTest extends TestCase
     }
 
     /**
-     * @covers ::toMeterValue
-     */
-    public function testToMeterPerSecondValue(): void
-    {
-        static::assertSame(42.0, Meter::toMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
-    }
-
-    /**
      * @covers ::fromMeterValue
      */
     public function testFromMeterPerSecondValue(): void
     {
-        static::assertSame(42.0, Meter::fromMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+
+        static::assertEquals(
+            new Meter(42.0, $arithmeticOperations),
+            Meter::fromMeterValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toMeterValue
+     */
+    public function testToMeterPerSecondValue(): void
+    {
+        static::assertSame(42.0, (new Meter(42.0, $this->createMock(ArithmeticOperations::class)))->toMeterValue());
     }
 }

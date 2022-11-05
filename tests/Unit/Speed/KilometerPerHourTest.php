@@ -31,7 +31,10 @@ class KilometerPerHourTest extends TestCase
                              ->with(42.0, 0.277778)
                              ->willReturn(151.19987904);
 
-        static::assertSame(151.19987904, KilometerPerHour::fromMeterPerSecondValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new KilometerPerHour(151.19987904, $arithmeticOperations),
+            KilometerPerHour::fromMeterPerSecondValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class KilometerPerHourTest extends TestCase
                              ->with(42.0, 0.277778)
                              ->willReturn(11.666676);
 
-        static::assertSame(11.666676, KilometerPerHour::toMeterPerSecondValue(42.0, $arithmeticOperations));
+        static::assertSame(11.666676, (new KilometerPerHour(42.0, $arithmeticOperations))->toMeterPerSecondValue());
     }
 }

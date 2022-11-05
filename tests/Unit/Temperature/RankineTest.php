@@ -21,24 +21,6 @@ class RankineTest extends TestCase
     }
 
     /**
-     * @covers ::toKelvinValue
-     */
-    public function testToKelvinValue(): void
-    {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 5)
-                             ->willReturn(210.0);
-        $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(210.0, 9)
-                             ->willReturn(23.3333333333);
-
-        static::assertSame(23.3333333333, Rankine::toKelvinValue(42.0, $arithmeticOperations));
-    }
-
-    /**
      * @covers ::fromKelvinValue
      */
     public function testFromKelvinValue(): void
@@ -53,6 +35,27 @@ class RankineTest extends TestCase
                              ->with(8.4, 9)
                              ->willReturn(75.6);
 
-        static::assertSame(75.6, Rankine::fromKelvinValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Rankine(75.6, $arithmeticOperations),
+            Rankine::fromKelvinValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toKelvinValue
+     */
+    public function testToKelvinValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('multiply')
+                             ->with(42.0, 5)
+                             ->willReturn(210.0);
+        $arithmeticOperations->expects(self::once())
+                             ->method('divide')
+                             ->with(210.0, 9)
+                             ->willReturn(23.3333333333);
+
+        static::assertSame(23.3333333333, (new Rankine(42.0, $arithmeticOperations))->toKelvinValue());
     }
 }

@@ -31,7 +31,10 @@ class FootTest extends TestCase
                              ->with(42.0, 0.3048)
                              ->willReturn(137.795275591);
 
-        static::assertSame(137.795275591, Foot::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Foot(137.795275591, $arithmeticOperations),
+            Foot::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class FootTest extends TestCase
                              ->with(42.0, 0.3048)
                              ->willReturn(12.8016);
 
-        static::assertSame(12.8016, Foot::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(12.8016, (new Foot(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

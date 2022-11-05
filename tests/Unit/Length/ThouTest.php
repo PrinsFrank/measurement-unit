@@ -31,7 +31,10 @@ class ThouTest extends TestCase
                              ->with(42.0, 39370.078740157)
                              ->willReturn(0.0010668);
 
-        static::assertSame(0.0010668, Thou::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Thou(0.0010668, $arithmeticOperations),
+            Thou::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class ThouTest extends TestCase
                              ->with(42.0, 39370.078740157)
                              ->willReturn(1653543.30709);
 
-        static::assertSame(1653543.30709, Thou::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(1653543.30709, (new Thou(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

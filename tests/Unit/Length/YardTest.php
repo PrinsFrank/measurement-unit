@@ -31,7 +31,10 @@ class YardTest extends TestCase
                              ->with(42.0, 0.9144)
                              ->willReturn(45.9317585302);
 
-        static::assertSame(45.9317585302, Yard::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Yard(45.9317585302, $arithmeticOperations),
+            Yard::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class YardTest extends TestCase
                              ->with(42.0, 0.9144)
                              ->willReturn(38.4048);
 
-        static::assertSame(38.4048, Yard::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(38.4048, (new Yard(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

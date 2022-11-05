@@ -21,18 +21,23 @@ class SecondTest extends TestCase
     }
 
     /**
-     * @covers ::toSecondValue
-     */
-    public function testToSecondValue(): void
-    {
-        static::assertSame(42.0, Second::toSecondValue(42.0, $this->createMock(ArithmeticOperations::class)));
-    }
-
-    /**
      * @covers ::fromSecondValue
      */
     public function testFromSecondValue(): void
     {
-        static::assertSame(42.0, Second::fromSecondValue(42.0, $this->createMock(ArithmeticOperations::class)));
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+
+        static::assertEquals(
+            new Second(42.0, $arithmeticOperations),
+            Second::fromSecondValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toSecondValue
+     */
+    public function testToSecondValue(): void
+    {
+        static::assertSame(42.0, (new Second(42.0, $this->createMock(ArithmeticOperations::class)))->toSecondValue());
     }
 }

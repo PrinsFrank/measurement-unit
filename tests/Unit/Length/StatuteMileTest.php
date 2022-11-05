@@ -31,7 +31,10 @@ class StatuteMileTest extends TestCase
                              ->with(42.0, 1609.3472)
                              ->willReturn(0.02609753818);
 
-        static::assertSame(0.02609753818, StatuteMile::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new StatuteMile(0.02609753818, $arithmeticOperations),
+            StatuteMile::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class StatuteMileTest extends TestCase
                              ->with(42.0, 1609.3472)
                              ->willReturn(67592.5824);
 
-        static::assertSame(67592.5824, StatuteMile::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(67592.5824, (new StatuteMile(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

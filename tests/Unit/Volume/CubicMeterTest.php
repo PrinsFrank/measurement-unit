@@ -21,18 +21,23 @@ class CubicMeterTest extends TestCase
     }
 
     /**
-     * @covers ::toCubicMeterValue
-     */
-    public function testToMeterPerSecondValue(): void
-    {
-        static::assertSame(42.0, CubicMeter::toCubicMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
-    }
-
-    /**
      * @covers ::fromCubicMeterValue
      */
     public function testFromMeterPerSecondValue(): void
     {
-        static::assertSame(42.0, CubicMeter::fromCubicMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+
+        static::assertEquals(
+            new CubicMeter(42.0, $arithmeticOperations),
+            CubicMeter::fromCubicMeterValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toCubicMeterValue
+     */
+    public function testToMeterPerSecondValue(): void
+    {
+        static::assertSame(42.0, (new CubicMeter(42.0, $this->createMock(ArithmeticOperations::class)))->toCubicMeterValue());
     }
 }

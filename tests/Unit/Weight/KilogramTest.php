@@ -21,18 +21,23 @@ class KilogramTest extends TestCase
     }
 
     /**
-     * @covers ::toKilogramValue
-     */
-    public function testToMeterPerSecondValue(): void
-    {
-        static::assertSame(42.0, Kilogram::toKilogramValue(42.0, $this->createMock(ArithmeticOperations::class)));
-    }
-
-    /**
      * @covers ::fromKilogramValue
      */
     public function testFromMeterPerSecondValue(): void
     {
-        static::assertSame(42.0, Kilogram::fromKilogramValue(42.0, $this->createMock(ArithmeticOperations::class)));
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+
+        static::assertEquals(
+            new Kilogram(42.0, $arithmeticOperations),
+            Kilogram::fromKilogramValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toKilogramValue
+     */
+    public function testToMeterPerSecondValue(): void
+    {
+        static::assertSame(42.0, (new Kilogram(42.0, $this->createMock(ArithmeticOperations::class)))->toKilogramValue());
     }
 }

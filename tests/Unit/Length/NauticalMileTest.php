@@ -31,7 +31,10 @@ class NauticalMileTest extends TestCase
                              ->with(42.0, 1852)
                              ->willReturn(0.02267818574);
 
-        static::assertSame(0.02267818574, NauticalMile::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new NauticalMile(0.02267818574, $arithmeticOperations),
+            NauticalMile::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class NauticalMileTest extends TestCase
                              ->with(42.0, 1852)
                              ->willReturn(77784.0);
 
-        static::assertSame(77784.0, NauticalMile::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(77784.0, (new NauticalMile(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

@@ -31,7 +31,10 @@ class InchTest extends TestCase
                              ->with(42.0, 0.0254)
                              ->willReturn(1653.54330709);
 
-        static::assertSame(1653.54330709, Inch::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Inch(1653.54330709, $arithmeticOperations),
+            Inch::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class InchTest extends TestCase
                              ->with(42.0, 0.0254)
                              ->willReturn(1.0668);
 
-        static::assertSame(1.0668, Inch::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(1.0668, (new Inch(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

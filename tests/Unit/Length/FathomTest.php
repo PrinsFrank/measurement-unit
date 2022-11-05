@@ -31,7 +31,10 @@ class FathomTest extends TestCase
             ->with(42.0, 1.8288)
             ->willReturn(22.9658792651);
 
-        static::assertSame(22.9658792651, Fathom::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Fathom(22.9658792651, $arithmeticOperations),
+            Fathom::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class FathomTest extends TestCase
             ->with(42.0, 1.8288)
             ->willReturn(76.8096);
 
-        static::assertSame(76.8096, Fathom::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(76.8096, (new Fathom(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

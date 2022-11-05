@@ -21,6 +21,23 @@ class CelsiusTest extends TestCase
     }
 
     /**
+     * @covers ::fromKelvinValue
+     */
+    public function testFromKelvinValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+                             ->method('subtract')
+                             ->with(42.0, 273.15)
+                             ->willReturn(-231.15);
+
+        static::assertEquals(
+            new Celsius(-231.15, $arithmeticOperations),
+            Celsius::fromKelvinValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
      * @covers ::toKelvinValue
      */
     public function testToKelvinValue(): void
@@ -31,20 +48,6 @@ class CelsiusTest extends TestCase
             ->with(42.0, 273.15)
             ->willReturn(315.15);
 
-        static::assertSame(315.15, Celsius::toKelvinValue(42.0, $arithmeticOperations));
-    }
-
-    /**
-     * @covers ::fromKelvinValue
-     */
-    public function testFromKelvinValue(): void
-    {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::once())
-            ->method('subtract')
-            ->with(42.0, 273.15)
-            ->willReturn(-231.15);
-
-        static::assertSame(-231.15, Celsius::fromKelvinValue(42.0, $arithmeticOperations));
+        static::assertSame(315.15, (new Celsius(42.0, $arithmeticOperations))->toKelvinValue());
     }
 }

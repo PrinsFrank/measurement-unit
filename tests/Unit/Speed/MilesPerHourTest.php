@@ -31,7 +31,10 @@ class MilesPerHourTest extends TestCase
             ->with(42.0, 0.44704)
             ->willReturn(93.9513242663);
 
-        static::assertSame(93.9513242663, MilesPerHour::fromMeterPerSecondValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new MilesPerHour(93.9513242663, $arithmeticOperations),
+            MilesPerHour::fromMeterPerSecondValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class MilesPerHourTest extends TestCase
             ->with(42.0, 0.44704)
             ->willReturn(18.77568);
 
-        static::assertSame(18.77568, MilesPerHour::toMeterPerSecondValue(42.0, $arithmeticOperations));
+        static::assertSame(18.77568, (new MilesPerHour(42.0, $arithmeticOperations))->toMeterPerSecondValue());
     }
 }

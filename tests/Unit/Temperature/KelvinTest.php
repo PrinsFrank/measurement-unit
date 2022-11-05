@@ -21,18 +21,23 @@ class KelvinTest extends TestCase
     }
 
     /**
-     * @covers ::toKelvinValue
-     */
-    public function testToKelvinValue(): void
-    {
-        static::assertSame(42.0, Kelvin::toKelvinValue(42.0, $this->createMock(ArithmeticOperations::class)));
-    }
-
-    /**
      * @covers ::fromKelvinValue
      */
     public function testFromKelvinValue(): void
     {
-        static::assertSame(42.0, Kelvin::fromKelvinValue(42.0, $this->createMock(ArithmeticOperations::class)));
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+
+        static::assertEquals(
+            new Kelvin(42.0, $arithmeticOperations),
+            Kelvin::fromKelvinValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toKelvinValue
+     */
+    public function testToKelvinValue(): void
+    {
+        static::assertSame(42.0, (new Kelvin(42.0, $this->createMock(ArithmeticOperations::class)))->toKelvinValue());
     }
 }

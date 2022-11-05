@@ -31,7 +31,10 @@ class HorseLengthTest extends TestCase
                              ->with(42.0, 2.4)
                              ->willReturn(17.5);
 
-        static::assertSame(17.5, HorseLength::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Horselength(17.5, $arithmeticOperations),
+            HorseLength::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class HorseLengthTest extends TestCase
                              ->with(42.0, 2.4)
                              ->willReturn(100.8);
 
-        static::assertSame(100.8, HorseLength::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(100.8, (new HorseLength(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

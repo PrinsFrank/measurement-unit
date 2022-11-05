@@ -25,7 +25,12 @@ class NewtonMeterTest extends TestCase
      */
     public function testFromNewtonMeter(): void
     {
-        static::assertSame(42.0, NewtonMeter::fromNewtonMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+
+        static::assertEquals(
+            new NewtonMeter(42.0, $arithmeticOperations),
+            NewtonMeter::fromNewtonMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -33,6 +38,6 @@ class NewtonMeterTest extends TestCase
      */
     public function testToNewtonMeter(): void
     {
-        static::assertSame(42.0, NewtonMeter::toNewtonMeterValue(42.0, $this->createMock(ArithmeticOperations::class)));
+        static::assertSame(42.0, (new NewtonMeter(42.0, $this->createMock(ArithmeticOperations::class)))->toNewtonMeterValue());
     }
 }

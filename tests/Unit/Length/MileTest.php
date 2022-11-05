@@ -31,7 +31,10 @@ class MileTest extends TestCase
                              ->with(42.0, 1609.344)
                              ->willReturn(0.02609759007);
 
-        static::assertSame(0.02609759007, Mile::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Mile(0.02609759007, $arithmeticOperations),
+            Mile::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class MileTest extends TestCase
                              ->with(42.0, 1609.344)
                              ->willReturn(67592.448);
 
-        static::assertSame(67592.448, Mile::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(67592.448, (new Mile(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

@@ -31,7 +31,10 @@ class FurlongTest extends TestCase
                              ->with(42.0, 201.1680)
                              ->willReturn(0.20878072059);
 
-        static::assertSame(0.20878072059, Furlong::fromMeterValue(42.0, $arithmeticOperations));
+        static::assertEquals(
+            new Furlong(0.20878072059, $arithmeticOperations),
+            Furlong::fromMeterValue(42.0, $arithmeticOperations)
+        );
     }
 
     /**
@@ -45,6 +48,6 @@ class FurlongTest extends TestCase
                              ->with(42.0, 201.1680)
                              ->willReturn(8449.056);
 
-        static::assertSame(8449.056, Furlong::toMeterValue(42.0, $arithmeticOperations));
+        static::assertSame(8449.056, (new Furlong(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

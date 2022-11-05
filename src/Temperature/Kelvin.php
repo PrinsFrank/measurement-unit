@@ -14,7 +14,7 @@ class Kelvin extends Temperature
 
     public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): static
     {
-        return new static($value);
+        return new static($value, $arithmeticOperations);
     }
 
     public function toKelvinValue(): float
