@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\Tests\Unit\Torque;
+namespace PrinsFrank\MeasurementUnit\Tests\Unit\Torque;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
