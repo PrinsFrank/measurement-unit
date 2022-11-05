@@ -12,15 +12,14 @@ use PrinsFrank\MeasurementUnit\Weight\Weight;
 
 class WeightTest extends TestCase
 {
+    /** @var array<class-string<Weight>> */
     private const WEIGHT_FQN_S = [
         Kilogram::class,
         MetricTon::class,
         Pound::class,
     ];
 
-    /**
-     * @dataProvider weightInstances
-     */
+    /** @dataProvider weightInstances */
     public function testReversibility(Weight $weight): void
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
@@ -28,6 +27,7 @@ class WeightTest extends TestCase
         static::assertEquals($weight, $weight::fromKilogramValue($weight->toKilogramValue(), $arithmetics));
     }
 
+    /** @return iterable<class-string<Weight>> */
     public function weightInstances(): iterable
     {
         foreach (self::WEIGHT_FQN_S as $volumeFQN) {

@@ -18,6 +18,7 @@ use PrinsFrank\MeasurementUnit\Volume\Volume;
 
 class VolumeTest extends TestCase
 {
+    /** @var array<class-string<Volume>> */
     private const VOLUME_FQN_S = [
         CubicInch::class,
         CubicMeter::class,
@@ -30,9 +31,7 @@ class VolumeTest extends TestCase
         TableSpoon::class,
     ];
 
-    /**
-     * @dataProvider volumeInstances
-     */
+    /** @dataProvider volumeInstances */
     public function testReversibility(Volume $volume): void
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
@@ -40,6 +39,7 @@ class VolumeTest extends TestCase
         static::assertEquals($volume, $volume::fromCubicMeterValue($volume->toCubicMeterValue(), $arithmetics));
     }
 
+    /** @return iterable<class-string<Volume>> */
     public function volumeInstances(): iterable
     {
         foreach (self::VOLUME_FQN_S as $volumeFQN) {

@@ -12,15 +12,14 @@ use PrinsFrank\MeasurementUnit\Speed\Speed;
 
 class SpeedTest extends TestCase
 {
+    /** @var array<class-string<Speed>> */
     private const SPEED_FQN_S = [
         KilometerPerHour::class,
         MeterPerSecond::class,
         MilesPerHour::class,
     ];
 
-    /**
-     * @dataProvider speedInstances
-     */
+    /** @dataProvider speedInstances */
     public function testReversibility(Speed $speed): void
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
@@ -28,6 +27,7 @@ class SpeedTest extends TestCase
         static::assertEquals($speed, $speed::fromMeterPerSecondValue($speed->toMeterPerSecondValue(), $arithmetics));
     }
 
+    /** @return iterable<class-string<Speed>> */
     public function speedInstances(): iterable
     {
         foreach (self::SPEED_FQN_S as $speedFQN) {

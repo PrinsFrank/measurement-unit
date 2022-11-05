@@ -10,13 +10,12 @@ use PrinsFrank\MeasurementUnit\Torque\Torque;
 
 class TorqueTest extends TestCase
 {
+    /** @var array<class-string<Torque>> */
     private const TORQUE_FQN_S = [
         NewtonMeter::class,
     ];
 
-    /**
-     * @dataProvider torqueInstances
-     */
+    /** @dataProvider torqueInstances */
     public function testReversibility(Torque $torque): void
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
@@ -24,6 +23,7 @@ class TorqueTest extends TestCase
         static::assertEquals($torque, $torque::fromNewtonMeterValue($torque->toNewtonMeterValue(), $arithmetics));
     }
 
+    /** @return iterable<class-string<Torque>> */
     public function torqueInstances(): iterable
     {
         foreach (self::TORQUE_FQN_S as $torqueFQN) {

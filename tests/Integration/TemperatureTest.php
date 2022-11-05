@@ -13,6 +13,7 @@ use PrinsFrank\MeasurementUnit\Temperature\Temperature;
 
 class TemperatureTest extends TestCase
 {
+    /** @var array<class-string<Temperature>> */
     private const TEMPERATURE_FQN_S = [
         Celsius::class,
         Fahrenheit::class,
@@ -20,9 +21,7 @@ class TemperatureTest extends TestCase
         Rankine::class,
     ];
 
-    /**
-     * @dataProvider temperatureInstances
-     */
+    /** @dataProvider temperatureInstances */
     public function testReversibility(Temperature $temperature): void
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
@@ -30,6 +29,7 @@ class TemperatureTest extends TestCase
         static::assertEqualsWithDelta($temperature, $temperature::fromKelvinValue($temperature->toKelvinValue(), $arithmetics), 0.000001);
     }
 
+    /** @return iterable<class-string<Temperature>> */
     public function temperatureInstances(): iterable
     {
         foreach (self::TEMPERATURE_FQN_S as $temperatureFQN) {

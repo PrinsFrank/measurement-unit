@@ -15,6 +15,7 @@ use PrinsFrank\MeasurementUnit\Time\Time;
 
 class TimeTest extends TestCase
 {
+    /** @var array<class-string<Time>> */
     private const TIME_FQN_S = [
         CentiTick::class,
         Day::class,
@@ -24,9 +25,7 @@ class TimeTest extends TestCase
         Tick::class,
     ];
 
-    /**
-     * @dataProvider timeInstances
-     */
+    /** @dataProvider timeInstances */
     public function testReversibility(Time $time): void
     {
         $arithmetics = new ArithmeticOperationsFloatingPoint();
@@ -34,6 +33,7 @@ class TimeTest extends TestCase
         static::assertEquals($time, $time::fromSecondValue($time->toSecondValue(), $arithmetics));
     }
 
+    /** @return iterable<class-string<Time>> */
     public function timeInstances(): iterable
     {
         foreach (self::TIME_FQN_S as $timeFQN) {

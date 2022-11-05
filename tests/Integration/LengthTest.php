@@ -19,6 +19,7 @@ use PrinsFrank\MeasurementUnit\Length\Yard;
 
 class LengthTest extends TestCase
 {
+    /** @var array<class-string<Length>> */
     private const LENGTH_FQN_S = [
         Fathom::class,
         Foot::class,
@@ -33,14 +34,13 @@ class LengthTest extends TestCase
         Yard::class,
     ];
 
-    /**
-     * @dataProvider lengthInstances
-     */
+    /** @dataProvider lengthInstances */
     public function testReversibility(Length $length): void
     {
         static::assertEquals($length, $length::fromMeterValue($length->toMeterValue(), $length->getArithmeticOperations()));
     }
 
+    /** @return iterable<class-string<Length>> */
     public function lengthInstances(): iterable
     {
         foreach (self::LENGTH_FQN_S as $lengthFQN) {
