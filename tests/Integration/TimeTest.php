@@ -36,7 +36,7 @@ class TimeTest extends TestCase
 
     public function timeInstances(): iterable
     {
-        foreach (static::TIME_FQN_S as $timeFQN) {
+        foreach (self::TIME_FQN_S as $timeFQN) {
             yield $timeFQN => [new $timeFQN(42.0)];
         }
     }

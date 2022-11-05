@@ -30,7 +30,7 @@ class SpeedTest extends TestCase
 
     public function speedInstances(): iterable
     {
-        foreach (static::SPEED_FQN_S as $speedFQN) {
+        foreach (self::SPEED_FQN_S as $speedFQN) {
             yield $speedFQN => [new $speedFQN(42.0)];
         }
     }

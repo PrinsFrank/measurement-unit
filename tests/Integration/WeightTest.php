@@ -30,7 +30,7 @@ class WeightTest extends TestCase
 
     public function weightInstances(): iterable
     {
-        foreach (static::WEIGHT_FQN_S as $volumeFQN) {
+        foreach (self::WEIGHT_FQN_S as $volumeFQN) {
             yield $volumeFQN => [new $volumeFQN(42.0)];
         }
     }

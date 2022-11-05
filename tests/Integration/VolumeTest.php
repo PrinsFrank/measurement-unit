@@ -42,7 +42,7 @@ class VolumeTest extends TestCase
 
     public function volumeInstances(): iterable
     {
-        foreach (static::VOLUME_FQN_S as $volumeFQN) {
+        foreach (self::VOLUME_FQN_S as $volumeFQN) {
             yield $volumeFQN => [new $volumeFQN(42.0)];
         }
     }

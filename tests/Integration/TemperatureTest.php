@@ -32,7 +32,7 @@ class TemperatureTest extends TestCase
 
     public function temperatureInstances(): iterable
     {
-        foreach (static::TEMPERATURE_FQN_S as $temperatureFQN) {
+        foreach (self::TEMPERATURE_FQN_S as $temperatureFQN) {
             yield $temperatureFQN => [new $temperatureFQN(42.0)];
         }
     }

@@ -26,7 +26,7 @@ class TorqueTest extends TestCase
 
     public function torqueInstances(): iterable
     {
-        foreach (static::TORQUE_FQN_S as $torqueFQN) {
+        foreach (self::TORQUE_FQN_S as $torqueFQN) {
             yield $torqueFQN => [new $torqueFQN(42.0)];
         }
     }

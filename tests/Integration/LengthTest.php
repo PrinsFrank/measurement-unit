@@ -43,7 +43,7 @@ class LengthTest extends TestCase
 
     public function lengthInstances(): iterable
     {
-        foreach (static::LENGTH_FQN_S as $lengthFQN) {
+        foreach (self::LENGTH_FQN_S as $lengthFQN) {
             yield $lengthFQN => [new $lengthFQN(42.0)];
         }
     }
