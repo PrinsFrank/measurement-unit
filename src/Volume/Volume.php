@@ -67,7 +67,6 @@ abstract class Volume implements VolumeInterface
      */
     protected function toUnit(string $fqn): Volume
     {
-        /** @var Volume $fqn */
         return $fqn::fromCubicMeterValue($this->toCubicMeterValue(), $this->arithmeticOperations);
     }
 

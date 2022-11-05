@@ -42,7 +42,6 @@ abstract class Temperature implements TemperatureInterface
      */
     protected function toUnit(string $fqn): Temperature
     {
-        /** @var Temperature $fqn */
         return $fqn::fromKelvinValue($this->toKelvinValue(), $this->arithmeticOperations);
     }
 
