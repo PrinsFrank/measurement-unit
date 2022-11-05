@@ -39,7 +39,7 @@ class VolumeTest extends TestCase
         static::assertEquals($volume, $volume::fromCubicMeterValue($volume->toCubicMeterValue(), $arithmetics));
     }
 
-    /** @return iterable<class-string<Volume>> */
+    /** @return iterable<class-string<Volume>, array<Volume>> */
     public function volumeInstances(): iterable
     {
         foreach (self::VOLUME_FQN_S as $volumeFQN) {

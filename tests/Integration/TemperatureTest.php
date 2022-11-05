@@ -29,7 +29,7 @@ class TemperatureTest extends TestCase
         static::assertEqualsWithDelta($temperature, $temperature::fromKelvinValue($temperature->toKelvinValue(), $arithmetics), 0.000001);
     }
 
-    /** @return iterable<class-string<Temperature>> */
+    /** @return iterable<class-string<Temperature>, array<Temperature>> */
     public function temperatureInstances(): iterable
     {
         foreach (self::TEMPERATURE_FQN_S as $temperatureFQN) {

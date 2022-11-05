@@ -33,7 +33,7 @@ class TimeTest extends TestCase
         static::assertEquals($time, $time::fromSecondValue($time->toSecondValue(), $arithmetics));
     }
 
-    /** @return iterable<class-string<Time>> */
+    /** @return iterable<class-string<Time>, array<Time>> */
     public function timeInstances(): iterable
     {
         foreach (self::TIME_FQN_S as $timeFQN) {

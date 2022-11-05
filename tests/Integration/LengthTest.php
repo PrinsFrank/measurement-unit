@@ -40,7 +40,7 @@ class LengthTest extends TestCase
         static::assertEquals($length, $length::fromMeterValue($length->toMeterValue(), $length->getArithmeticOperations()));
     }
 
-    /** @return iterable<class-string<Length>> */
+    /** @return iterable<class-string<Length>, array<Length>> */
     public function lengthInstances(): iterable
     {
         foreach (self::LENGTH_FQN_S as $lengthFQN) {

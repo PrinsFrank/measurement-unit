@@ -27,11 +27,11 @@ class WeightTest extends TestCase
         static::assertEquals($weight, $weight::fromKilogramValue($weight->toKilogramValue(), $arithmetics));
     }
 
-    /** @return iterable<class-string<Weight>> */
+    /** @return iterable<class-string<Weight>, array<Weight>> */
     public function weightInstances(): iterable
     {
-        foreach (self::WEIGHT_FQN_S as $volumeFQN) {
-            yield $volumeFQN => [new $volumeFQN(42.0)];
+        foreach (self::WEIGHT_FQN_S as $weightFQN) {
+            yield $weightFQN => [new $weightFQN(42.0)];
         }
     }
 }

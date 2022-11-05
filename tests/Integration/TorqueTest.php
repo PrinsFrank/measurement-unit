@@ -23,7 +23,7 @@ class TorqueTest extends TestCase
         static::assertEquals($torque, $torque::fromNewtonMeterValue($torque->toNewtonMeterValue(), $arithmetics));
     }
 
-    /** @return iterable<class-string<Torque>> */
+    /** @return iterable<class-string<Torque>, array<Torque>> */
     public function torqueInstances(): iterable
     {
         foreach (self::TORQUE_FQN_S as $torqueFQN) {

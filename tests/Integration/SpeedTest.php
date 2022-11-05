@@ -5,6 +5,7 @@ namespace PrinsFrank\MeasurementUnit\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\Length\Length;
 use PrinsFrank\MeasurementUnit\Speed\KilometerPerHour;
 use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
 use PrinsFrank\MeasurementUnit\Speed\MilesPerHour;
@@ -27,7 +28,7 @@ class SpeedTest extends TestCase
         static::assertEquals($speed, $speed::fromMeterPerSecondValue($speed->toMeterPerSecondValue(), $arithmetics));
     }
 
-    /** @return iterable<class-string<Speed>> */
+    /** @return iterable<class-string<Speed>, array<Speed>> */
     public function speedInstances(): iterable
     {
         foreach (self::SPEED_FQN_S as $speedFQN) {
