@@ -29,8 +29,10 @@
         "cs:fix": "php-cs-fixer fix --allow-risky=yes",
         "stan": "phpstan analyse",
         "unit": "phpunit --testsuite=Unit",
+        "integration": "phpunit --testsuite=Integration",
         "test": [
             "@unit",
+            "@integration",
             "@cs"
         ]
     }
