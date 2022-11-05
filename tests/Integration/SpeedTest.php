@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+namespace PrinsFrank\MeasurementUnit\Tests\Integration;
+
+use PHPUnit\Framework\TestCase;
+use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\Speed\KilometerPerHour;
+use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
+use PrinsFrank\MeasurementUnit\Speed\MilesPerHour;
+use PrinsFrank\MeasurementUnit\Speed\Speed;
+
+class SpeedTest extends TestCase
+{
+    private const SPEED_FQN_S = [
+        KilometerPerHour::class,
+        MeterPerSecond::class,
+        MilesPerHour::class,
+    ];
+
+    /**
+     * @dataProvider speedInstances
+     */
+    public function testReversibility(Speed $speed): void
+    {
+        $arithmetics = new ArithmeticOperationsFloatingPoint();
+
+        static::assertSame(42.0, $speed::fromMeterPerSecondValue($speed::toMeterPerSecondValue(42.0, $arithmetics), $arithmetics));
+    }
+
+    public function speedInstances(): iterable
+    {
+        foreach (static::SPEED_FQN_S as $speedFQN) {
+            yield $speedFQN => [new $speedFQN(42.0)];
+        }
+    }
+}
