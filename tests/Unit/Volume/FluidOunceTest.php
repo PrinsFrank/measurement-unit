@@ -17,7 +17,7 @@ class FluidOunceTest extends TestCase
      */
     public function testGetSymbol(): void
     {
-        static::assertSame('dr', FluidOunce::getSymbol());
+        static::assertSame('fl oz', FluidOunce::getSymbol());
     }
 
     /**
