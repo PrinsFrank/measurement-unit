@@ -25,9 +25,7 @@ class TimeTest extends TestCase
     /** @dataProvider timeInstances */
     public function testReversibility(Time $time): void
     {
-        $arithmetics = new ArithmeticOperationsFloatingPoint();
-
-        static::assertEquals($time, $time::fromSecondValue($time->toSecondValue(), $arithmetics));
+        static::assertEquals($time, $time::fromSecondValue($time->toSecondValue(), $time->arithmeticOperations));
     }
 
     /** @return iterable<class-string<Time>, array<Time>> */

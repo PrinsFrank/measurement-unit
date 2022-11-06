@@ -8,7 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Torque implements TorqueInterface
 {
-    private ArithmeticOperations $arithmeticOperations;
+    public readonly ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {

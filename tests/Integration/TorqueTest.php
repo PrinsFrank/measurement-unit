@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 use PrinsFrank\MeasurementUnit\Torque\NewtonMeter;
 use PrinsFrank\MeasurementUnit\Torque\Torque;
 
@@ -19,9 +18,7 @@ class TorqueTest extends TestCase
     /** @dataProvider torqueInstances */
     public function testReversibility(Torque $torque): void
     {
-        $arithmetics = new ArithmeticOperationsFloatingPoint();
-
-        static::assertEquals($torque, $torque::fromNewtonMeterValue($torque->toNewtonMeterValue(), $arithmetics));
+        static::assertEquals($torque, $torque::fromNewtonMeterValue($torque->toNewtonMeterValue(), $torque->arithmeticOperations));
     }
 
     /** @return iterable<class-string<Torque>, array<Torque>> */

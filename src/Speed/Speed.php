@@ -8,7 +8,7 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Speed implements SpeedInterface
 {
-    protected ArithmeticOperations $arithmeticOperations;
+    public readonly ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {

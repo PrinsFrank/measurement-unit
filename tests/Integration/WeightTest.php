@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 use PrinsFrank\MeasurementUnit\Weight\Kilogram;
 use PrinsFrank\MeasurementUnit\Weight\MetricTon;
 use PrinsFrank\MeasurementUnit\Weight\Pound;
@@ -23,9 +22,7 @@ class WeightTest extends TestCase
     /** @dataProvider weightInstances */
     public function testReversibility(Weight $weight): void
     {
-        $arithmetics = new ArithmeticOperationsFloatingPoint();
-
-        static::assertEquals($weight, $weight::fromKilogramValue($weight->toKilogramValue(), $arithmetics));
+        static::assertEquals($weight, $weight::fromKilogramValue($weight->toKilogramValue(), $weight->arithmeticOperations));
     }
 
     /** @return iterable<class-string<Weight>, array<Weight>> */

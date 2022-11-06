@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 use PrinsFrank\MeasurementUnit\Temperature\Celsius;
 use PrinsFrank\MeasurementUnit\Temperature\Fahrenheit;
 use PrinsFrank\MeasurementUnit\Temperature\Kelvin;
@@ -25,9 +24,7 @@ class TemperatureTest extends TestCase
     /** @dataProvider temperatureInstances */
     public function testReversibility(Temperature $temperature): void
     {
-        $arithmetics = new ArithmeticOperationsFloatingPoint();
-
-        static::assertEqualsWithDelta($temperature, $temperature::fromKelvinValue($temperature->toKelvinValue(), $arithmetics), 0.000001);
+        static::assertEqualsWithDelta($temperature, $temperature::fromKelvinValue($temperature->toKelvinValue(), $temperature->arithmeticOperations), 0.000001);
     }
 
     /** @return iterable<class-string<Temperature>, array<Temperature>> */

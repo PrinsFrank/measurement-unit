@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 use PrinsFrank\MeasurementUnit\Volume\CubicInch;
 use PrinsFrank\MeasurementUnit\Volume\CubicMeter;
 use PrinsFrank\MeasurementUnit\Volume\CubicYard;
@@ -35,9 +34,7 @@ class VolumeTest extends TestCase
     /** @dataProvider volumeInstances */
     public function testReversibility(Volume $volume): void
     {
-        $arithmetics = new ArithmeticOperationsFloatingPoint();
-
-        static::assertEquals($volume, $volume::fromCubicMeterValue($volume->toCubicMeterValue(), $arithmetics));
+        static::assertEquals($volume, $volume::fromCubicMeterValue($volume->toCubicMeterValue(), $volume->arithmeticOperations));
     }
 
     /** @return iterable<class-string<Volume>, array<Volume>> */

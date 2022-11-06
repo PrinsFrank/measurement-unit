@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 use PrinsFrank\MeasurementUnit\Speed\KilometerPerHour;
 use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
 use PrinsFrank\MeasurementUnit\Speed\MilesPerHour;
@@ -23,9 +22,7 @@ class SpeedTest extends TestCase
     /** @dataProvider speedInstances */
     public function testReversibility(Speed $speed): void
     {
-        $arithmetics = new ArithmeticOperationsFloatingPoint();
-
-        static::assertEquals($speed, $speed::fromMeterPerSecondValue($speed->toMeterPerSecondValue(), $arithmetics));
+        static::assertEquals($speed, $speed::fromMeterPerSecondValue($speed->toMeterPerSecondValue(), $speed->arithmeticOperations));
     }
 
     /** @return iterable<class-string<Speed>, array<Speed>> */

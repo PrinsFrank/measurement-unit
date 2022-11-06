@@ -8,16 +8,11 @@ use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoi
 
 abstract class Length implements LengthInterface
 {
-    protected ArithmeticOperations $arithmeticOperations;
+    public readonly ArithmeticOperations $arithmeticOperations;
 
     public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
         $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
-    }
-
-    public function getArithmeticOperations(): ArithmeticOperations
-    {
-        return $this->arithmeticOperations;
     }
 
     public function toFathom(): Fathom

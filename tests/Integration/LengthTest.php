@@ -38,7 +38,7 @@ class LengthTest extends TestCase
     /** @dataProvider lengthInstances */
     public function testReversibility(Length $length): void
     {
-        static::assertEquals($length, $length::fromMeterValue($length->toMeterValue(), $length->getArithmeticOperations()));
+        static::assertEquals($length, $length::fromMeterValue($length->toMeterValue(), $length->arithmeticOperations));
     }
 
     /** @return iterable<class-string<Length>, array<Length>> */
