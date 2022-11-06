@@ -72,7 +72,7 @@ class SpeedTest extends TestCase
 
     /**
      * @covers ::toUnit
-     * @covers ::toKilometersPerHour
+     * @covers ::toKilometerPerHour
      * @covers ::toMeterPerSecond
      * @covers ::toMilesPerHour
      */
