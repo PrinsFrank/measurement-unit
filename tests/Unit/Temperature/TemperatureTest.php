@@ -6,6 +6,10 @@ namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\Temperature\Celsius;
+use PrinsFrank\MeasurementUnit\Temperature\Fahrenheit;
+use PrinsFrank\MeasurementUnit\Temperature\Kelvin;
+use PrinsFrank\MeasurementUnit\Temperature\Rankine;
 use PrinsFrank\MeasurementUnit\Temperature\Temperature;
 use PrinsFrank\MeasurementUnit\Temperature\TemperatureInterface;
 
@@ -20,7 +24,7 @@ class TemperatureTest extends TestCase
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $length               = new class (42.0, $arithmeticOperations) extends Temperature {
+        $temperature               = new class (42.0, $arithmeticOperations) extends Temperature {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -37,8 +41,8 @@ class TemperatureTest extends TestCase
             }
         };
 
-        static::assertSame(42.0, $length->value);
-        static::assertSame($arithmeticOperations, $length->arithmeticOperations);
+        static::assertSame(42.0, $temperature->value);
+        static::assertSame($arithmeticOperations, $temperature->arithmeticOperations);
     }
 
     /**
@@ -46,7 +50,7 @@ class TemperatureTest extends TestCase
      */
     public function testConstructWithoutSuppliedArithmeticOperationsInstance(): void
     {
-        $length = new class (42.0) extends Temperature {
+        $temperature = new class (42.0) extends Temperature {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -63,8 +67,51 @@ class TemperatureTest extends TestCase
             }
         };
 
-        static::assertSame(42.0, $length->value);
-        static::assertInstanceOf(ArithmeticOperationsFloatingPoint::class, $length->arithmeticOperations);
+        static::assertSame(42.0, $temperature->value);
+        static::assertInstanceOf(ArithmeticOperationsFloatingPoint::class, $temperature->arithmeticOperations);
+    }
+
+    /**
+     * @covers ::toUnit
+     * @covers ::toCelsius
+     * @covers ::toFahrenheit
+     * @covers ::toKelvin
+     * @covers ::toRankine
+     */
+    public function testToUnit(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::exactly(2))
+                             ->method('subtract')
+                             ->willReturn(33.0);
+        $arithmeticOperations->expects(self::exactly(2))
+                             ->method('multiply')
+                             ->willReturn(33.0);
+        $arithmeticOperations->expects(self::exactly(2))
+                             ->method('divide')
+                             ->willReturn(33.0);
+
+        $temperature = new class (42.0, $arithmeticOperations) extends Temperature {
+            public static function getSymbol(): string
+            {
+                return '';
+            }
+
+            public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): TemperatureInterface
+            {
+                return new self($value, $arithmeticOperations);
+            }
+
+            public function toKelvinValue(): float
+            {
+                return 21.0;
+            }
+        };
+
+        static::assertEquals(new Celsius(33.0, $arithmeticOperations), $temperature->toCelsius());
+        static::assertEquals(new Fahrenheit(33.0, $arithmeticOperations), $temperature->toFahrenheit());
+        static::assertEquals(new Kelvin(21.0, $arithmeticOperations), $temperature->toKelvin());
+        static::assertEquals(new Rankine(33.0, $arithmeticOperations), $temperature->toRankine());
     }
 
     /**
@@ -72,7 +119,7 @@ class TemperatureTest extends TestCase
      */
     public function testToString(): void
     {
-        $length = new class (42.0) extends Temperature {
+        $temperature = new class (42.0) extends Temperature {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -89,6 +136,6 @@ class TemperatureTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $length->__toString());
+        static::assertSame('42foo', $temperature->__toString());
     }
 }

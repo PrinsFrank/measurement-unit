@@ -6,6 +6,9 @@ namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\Weight\Kilogram;
+use PrinsFrank\MeasurementUnit\Weight\MetricTon;
+use PrinsFrank\MeasurementUnit\Weight\Pound;
 use PrinsFrank\MeasurementUnit\Weight\Weight;
 use PrinsFrank\MeasurementUnit\Weight\WeightInterface;
 
@@ -20,7 +23,7 @@ class WeightTest extends TestCase
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $length               = new class (42.0, $arithmeticOperations) extends Weight {
+        $weight               = new class (42.0, $arithmeticOperations) extends Weight {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -37,8 +40,8 @@ class WeightTest extends TestCase
             }
         };
 
-        static::assertSame(42.0, $length->value);
-        static::assertSame($arithmeticOperations, $length->arithmeticOperations);
+        static::assertSame(42.0, $weight->value);
+        static::assertSame($arithmeticOperations, $weight->arithmeticOperations);
     }
 
     /**
@@ -46,7 +49,7 @@ class WeightTest extends TestCase
      */
     public function testConstructWithoutSuppliedArithmeticOperationsInstance(): void
     {
-        $length = new class (42.0) extends Weight {
+        $weight = new class (42.0) extends Weight {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -63,8 +66,43 @@ class WeightTest extends TestCase
             }
         };
 
-        static::assertSame(42.0, $length->value);
-        static::assertInstanceOf(ArithmeticOperationsFloatingPoint::class, $length->arithmeticOperations);
+        static::assertSame(42.0, $weight->value);
+        static::assertInstanceOf(ArithmeticOperationsFloatingPoint::class, $weight->arithmeticOperations);
+    }
+
+    /**
+     * @covers ::toUnit
+     * @covers ::toKilogram
+     * @covers ::toMetricTon
+     * @covers ::toPound
+     */
+    public function testToUnit(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::exactly(2))
+                             ->method('divide')
+                             ->willReturn(33.0);
+
+        $speed = new class (42.0, $arithmeticOperations) extends Weight {
+            public static function getSymbol(): string
+            {
+                return '';
+            }
+
+            public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): WeightInterface
+            {
+                return new self($value, $arithmeticOperations);
+            }
+
+            public function toKilogramValue(): float
+            {
+                return 21.0;
+            }
+        };
+
+        static::assertEquals(new Kilogram(21.0, $arithmeticOperations), $speed->toKilogram());
+        static::assertEquals(new MetricTon(33.0, $arithmeticOperations), $speed->toMetricTon());
+        static::assertEquals(new Pound(33.0, $arithmeticOperations), $speed->toPound());
     }
 
     /**
@@ -72,7 +110,7 @@ class WeightTest extends TestCase
      */
     public function testToString(): void
     {
-        $length = new class (42.0) extends Weight {
+        $weight = new class (42.0) extends Weight {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -89,6 +127,6 @@ class WeightTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $length->__toString());
+        static::assertSame('42foo', $weight->__toString());
     }
 }

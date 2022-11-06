@@ -6,6 +6,9 @@ namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\Speed\KilometerPerHour;
+use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
+use PrinsFrank\MeasurementUnit\Speed\MilesPerHour;
 use PrinsFrank\MeasurementUnit\Speed\Speed;
 use PrinsFrank\MeasurementUnit\Speed\SpeedInterface;
 
@@ -20,7 +23,7 @@ class SpeedTest extends TestCase
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $length               = new class (42.0, $arithmeticOperations) extends Speed {
+        $speed               = new class (42.0, $arithmeticOperations) extends Speed {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -37,8 +40,8 @@ class SpeedTest extends TestCase
             }
         };
 
-        static::assertSame(42.0, $length->value);
-        static::assertSame($arithmeticOperations, $length->arithmeticOperations);
+        static::assertSame(42.0, $speed->value);
+        static::assertSame($arithmeticOperations, $speed->arithmeticOperations);
     }
 
     /**
@@ -46,7 +49,7 @@ class SpeedTest extends TestCase
      */
     public function testConstructWithoutSuppliedArithmeticOperationsInstance(): void
     {
-        $length = new class (42.0) extends Speed {
+        $speed = new class (42.0) extends Speed {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -63,8 +66,43 @@ class SpeedTest extends TestCase
             }
         };
 
-        static::assertSame(42.0, $length->value);
-        static::assertInstanceOf(ArithmeticOperationsFloatingPoint::class, $length->arithmeticOperations);
+        static::assertSame(42.0, $speed->value);
+        static::assertInstanceOf(ArithmeticOperationsFloatingPoint::class, $speed->arithmeticOperations);
+    }
+
+    /**
+     * @covers ::toUnit
+     * @covers ::toKilometersPerHour
+     * @covers ::toMeterPerSecond
+     * @covers ::toMilesPerHour
+     */
+    public function testToUnit(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::exactly(2))
+                             ->method('divide')
+                             ->willReturn(33.0);
+
+        $speed = new class (42.0, $arithmeticOperations) extends Speed {
+            public static function getSymbol(): string
+            {
+                return '';
+            }
+
+            public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): SpeedInterface
+            {
+                return new self($value, $arithmeticOperations);
+            }
+
+            public function toMeterPerSecondValue(): float
+            {
+                return 21.0;
+            }
+        };
+
+        static::assertEquals(new KilometerPerHour(33.0, $arithmeticOperations), $speed->toKilometerPerHour());
+        static::assertEquals(new MeterPerSecond(21.0, $arithmeticOperations), $speed->toMeterPerSecond());
+        static::assertEquals(new MilesPerHour(33.0, $arithmeticOperations), $speed->toMilesPerHour());
     }
 
     /**
@@ -72,7 +110,7 @@ class SpeedTest extends TestCase
      */
     public function testToString(): void
     {
-        $length = new class (42.0) extends Speed {
+        $speed = new class (42.0) extends Speed {
             public static function getSymbol(): string
             {
                 return 'foo';
@@ -89,6 +127,6 @@ class SpeedTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $length->__toString());
+        static::assertSame('42foo', $speed->__toString());
     }
 }
