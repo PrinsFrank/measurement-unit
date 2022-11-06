@@ -10,7 +10,7 @@ use PrinsFrank\MeasurementUnit\Temperature\Kelvin;
 use PrinsFrank\MeasurementUnit\Temperature\Rankine;
 use PrinsFrank\MeasurementUnit\Temperature\Temperature;
 
-/** @covers Temperature */
+/** @coversNothing */
 class TemperatureTest extends TestCase
 {
     /** @var array<class-string<Temperature>> */

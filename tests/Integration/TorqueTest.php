@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\MeasurementUnit\Torque\NewtonMeter;
 use PrinsFrank\MeasurementUnit\Torque\Torque;
 
-/** @covers Torque */
+/** @coversNothing */
 class TorqueTest extends TestCase
 {
     /** @var array<class-string<Torque>> */

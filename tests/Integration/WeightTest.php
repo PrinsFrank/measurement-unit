@@ -9,7 +9,7 @@ use PrinsFrank\MeasurementUnit\Weight\MetricTon;
 use PrinsFrank\MeasurementUnit\Weight\Pound;
 use PrinsFrank\MeasurementUnit\Weight\Weight;
 
-/** @covers Weight */
+/** @coversNothing */
 class WeightTest extends TestCase
 {
     /** @var array<class-string<Weight>> */

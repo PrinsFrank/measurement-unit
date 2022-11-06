@@ -9,7 +9,7 @@ use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
 use PrinsFrank\MeasurementUnit\Speed\MilesPerHour;
 use PrinsFrank\MeasurementUnit\Speed\Speed;
 
-/** @covers Speed */
+/** @coversNothing */
 class SpeedTest extends TestCase
 {
     /** @var array<class-string<Speed>> */

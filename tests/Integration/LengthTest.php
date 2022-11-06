@@ -17,7 +17,7 @@ use PrinsFrank\MeasurementUnit\Length\StatuteMile;
 use PrinsFrank\MeasurementUnit\Length\Thou;
 use PrinsFrank\MeasurementUnit\Length\Yard;
 
-/** @covers Length */
+/** @coversNothing */
 class LengthTest extends TestCase
 {
     /** @var array<class-string<Length>> */
