@@ -10,7 +10,7 @@ abstract class Speed implements SpeedInterface
 {
     public readonly ArithmeticOperations $arithmeticOperations;
 
-    public function __construct(protected float $value, ?ArithmeticOperations $arithmeticOperations = null)
+    public function __construct(public readonly float $value, ?ArithmeticOperations $arithmeticOperations = null)
     {
         $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
     }
