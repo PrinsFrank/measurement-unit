@@ -23,7 +23,7 @@ class SpeedTest extends TestCase
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $speed               = new class (42.0, $arithmeticOperations) extends Speed {
+        $speed                = new class (42.0, $arithmeticOperations) extends Speed {
             public static function getSymbol(): string
             {
                 return 'foo';

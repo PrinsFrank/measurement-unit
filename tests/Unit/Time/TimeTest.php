@@ -24,7 +24,7 @@ class TimeTest extends TestCase
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $time               = new class (42.0, $arithmeticOperations) extends Time {
+        $time                 = new class (42.0, $arithmeticOperations) extends Time {
             public static function getSymbol(): string
             {
                 return 'foo';

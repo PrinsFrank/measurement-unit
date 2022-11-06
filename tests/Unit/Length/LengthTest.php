@@ -19,7 +19,6 @@ use PrinsFrank\MeasurementUnit\Length\NauticalMile;
 use PrinsFrank\MeasurementUnit\Length\StatuteMile;
 use PrinsFrank\MeasurementUnit\Length\Thou;
 use PrinsFrank\MeasurementUnit\Length\Yard;
-use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
 
 /**
  * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\Length

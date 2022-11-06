@@ -23,7 +23,7 @@ class TemperatureTest extends TestCase
      */
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations      = $this->createMock(ArithmeticOperations::class);
         $temperature               = new class (42.0, $arithmeticOperations) extends Temperature {
             public static function getSymbol(): string
             {
