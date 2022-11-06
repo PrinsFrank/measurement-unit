@@ -20,7 +20,7 @@ class WeightTest extends TestCase
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $length = new class (42.0, $arithmeticOperations) extends Weight {
+        $length               = new class (42.0, $arithmeticOperations) extends Weight {
             public static function getSymbol(): string
             {
                 return 'foo';

@@ -20,7 +20,7 @@ class VolumeTest extends TestCase
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $length = new class (42.0, $arithmeticOperations) extends Volume {
+        $length               = new class (42.0, $arithmeticOperations) extends Volume {
             public static function getSymbol(): string
             {
                 return 'foo';
