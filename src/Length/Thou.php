@@ -14,11 +14,11 @@ class Thou extends Length
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new self($arithmeticOperations->divide($value, 39370.078740157), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 0.0000254), $arithmeticOperations);
     }
 
     public function toMeterValue(): float
     {
-        return $this->arithmeticOperations->multiply($this->value, 39370.078740157);
+        return $this->arithmeticOperations->multiply($this->value, 0.0000254);
     }
 }
