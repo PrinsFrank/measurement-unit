@@ -32,4 +32,11 @@ class SpeedTest extends TestCase
             yield $speedFQN => [new $speedFQN(42.0)];
         }
     }
+
+    public function testCorrectConversionRate(): void
+    {
+        static::assertEqualsWithDelta(new MeterPerSecond(11.666676), (new KilometerPerHour(42.0))->toMeterPerSecond(), 0.000001);
+        static::assertEqualsWithDelta(new MeterPerSecond(42.0), (new MeterPerSecond(42.0))->toMeterPerSecond(), 0.000001);
+        static::assertEqualsWithDelta(new MeterPerSecond(18.77568), (new MilesPerHour(42.0))->toMeterPerSecond(), 0.000001);
+    }
 }
