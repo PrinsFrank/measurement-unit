@@ -34,7 +34,7 @@ class VolumeTest extends TestCase
     /** @dataProvider volumeInstances */
     public function testReversibility(Volume $volume): void
     {
-        static::assertEquals($volume, $volume::fromCubicMeterValue($volume->toCubicMeterValue(), $volume->arithmeticOperations));
+        static::assertEqualsWithDelta($volume, $volume::fromCubicMeterValue($volume->toCubicMeterValue(), $volume->arithmeticOperations), 0.000001);
     }
 
     /** @return iterable<class-string<Volume>, array<Volume>> */
@@ -43,5 +43,18 @@ class VolumeTest extends TestCase
         foreach (self::VOLUME_FQN_S as $volumeFQN) {
             yield $volumeFQN => [new $volumeFQN(42.0)];
         }
+    }
+
+    public function testCorrectConversionRate(): void
+    {
+        static::assertEqualsWithDelta(new CubicMeter(0.0006882582), (new CubicInch(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(42.0), (new CubicMeter(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(32.1113099), (new CubicYard(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(0.000155261), (new FluidDram(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(0.00124209), (new FluidOunce(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(0.042), (new Liter(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(0.019873392), (new Pint(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(0.0397468), (new Quart(42.0))->toCubicMeter(), 0.000001);
+        static::assertEqualsWithDelta(new CubicMeter(0.000621044), (new TableSpoon(42.0))->toCubicMeter(), 0.000001);
     }
 }

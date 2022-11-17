@@ -23,24 +23,7 @@ class QuartTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
-    {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::once())
-            ->method('multiply')
-            ->with(42.0, 0.000946353)
-            ->willReturn(0.039746826);
-
-        static::assertEquals(
-            new Quart(0.039746826, $arithmeticOperations),
-            Quart::fromCubicMeterValue(42.0, $arithmeticOperations)
-        );
-    }
-
-    /**
-     * @covers ::toCubicMeterValue
-     */
-    public function testToMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
@@ -48,6 +31,23 @@ class QuartTest extends TestCase
             ->with(42.0, 0.000946353)
             ->willReturn(44380.9022637);
 
-        static::assertSame(44380.9022637, (new Quart(42.0, $arithmeticOperations))->toCubicMeterValue());
+        static::assertEquals(
+            new Quart(44380.9022637, $arithmeticOperations),
+            Quart::fromCubicMeterValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toCubicMeterValue
+     */
+    public function testToCubicMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+            ->method('multiply')
+            ->with(42.0, 0.000946353)
+            ->willReturn(0.039746826);
+
+        static::assertSame(0.039746826, (new Quart(42.0, $arithmeticOperations))->toCubicMeterValue());
     }
 }

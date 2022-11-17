@@ -14,11 +14,11 @@ class TableSpoon extends Volume
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {
-        return new self($arithmeticOperations->multiply($value, 0.000015), $arithmeticOperations);
+        return new self($arithmeticOperations->divide($value, 0.0000147868), $arithmeticOperations);
     }
 
     public function toCubicMeterValue(): float
     {
-        return $this->arithmeticOperations->divide($this->value, 0.000015);
+        return $this->arithmeticOperations->multiply($this->value, 0.0000147868);
     }
 }

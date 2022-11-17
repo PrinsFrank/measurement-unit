@@ -23,24 +23,7 @@ class CubicYardTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
-    {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::once())
-            ->method('multiply')
-            ->with(42.0, 0.764555)
-            ->willReturn(32.11131);
-
-        static::assertEquals(
-            new CubicYard(32.11131, $arithmeticOperations),
-            CubicYard::fromCubicMeterValue(42.0, $arithmeticOperations)
-        );
-    }
-
-    /**
-     * @covers ::toCubicMeterValue
-     */
-    public function testToMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
@@ -48,6 +31,23 @@ class CubicYardTest extends TestCase
             ->with(42.0, 0.764555)
             ->willReturn(54.9339158072);
 
-        static::assertSame(54.9339158072, (new CubicYard(42.0, $arithmeticOperations))->toCubicMeterValue());
+        static::assertEquals(
+            new CubicYard(54.9339158072, $arithmeticOperations),
+            CubicYard::fromCubicMeterValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toCubicMeterValue
+     */
+    public function testToCubicMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+            ->method('multiply')
+            ->with(42.0, 0.764555)
+            ->willReturn(32.11131);
+
+        static::assertSame(32.11131, (new CubicYard(42.0, $arithmeticOperations))->toCubicMeterValue());
     }
 }

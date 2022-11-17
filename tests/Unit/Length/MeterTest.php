@@ -23,7 +23,7 @@ class MeterTest extends TestCase
     /**
      * @covers ::fromMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
+    public function testFromMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
@@ -36,7 +36,7 @@ class MeterTest extends TestCase
     /**
      * @covers ::toMeterValue
      */
-    public function testToMeterPerSecondValue(): void
+    public function testToMeterValue(): void
     {
         static::assertSame(42.0, (new Meter(42.0, $this->createMock(ArithmeticOperations::class)))->toMeterValue());
     }

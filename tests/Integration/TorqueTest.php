@@ -18,7 +18,7 @@ class TorqueTest extends TestCase
     /** @dataProvider torqueInstances */
     public function testReversibility(Torque $torque): void
     {
-        static::assertEquals($torque, $torque::fromNewtonMeterValue($torque->toNewtonMeterValue(), $torque->arithmeticOperations));
+        static::assertEqualsWithDelta($torque, $torque::fromNewtonMeterValue($torque->toNewtonMeterValue(), $torque->arithmeticOperations), 0.000001);
     }
 
     /** @return iterable<class-string<Torque>, array<Torque>> */
@@ -27,5 +27,10 @@ class TorqueTest extends TestCase
         foreach (self::TORQUE_FQN_S as $torqueFQN) {
             yield $torqueFQN => [new $torqueFQN(42.0)];
         }
+    }
+
+    public function testCorrectConversionRate(): void
+    {
+        static::assertEqualsWithDelta(new NewtonMeter(42.0), (new NewtonMeter(42.0))->toNewtonMeter(), 0.000001);
     }
 }

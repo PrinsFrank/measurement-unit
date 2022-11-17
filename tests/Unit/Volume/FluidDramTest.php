@@ -23,24 +23,7 @@ class FluidDramTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
-    {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::once())
-            ->method('multiply')
-            ->with(42.0, 0.0000036966912)
-            ->willReturn(0.00015526103);
-
-        static::assertEquals(
-            new FluidDram(0.00015526103, $arithmeticOperations),
-            FluidDram::fromCubicMeterValue(42.0, $arithmeticOperations)
-        );
-    }
-
-    /**
-     * @covers ::toCubicMeterValue
-     */
-    public function testToMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
@@ -48,6 +31,23 @@ class FluidDramTest extends TestCase
             ->with(42.0, 0.0000036966912)
             ->willReturn(11361511.6134);
 
-        static::assertSame(11361511.6134, (new FluidDram(42.0, $arithmeticOperations))->toCubicMeterValue());
+        static::assertEquals(
+            new FluidDram(11361511.6134, $arithmeticOperations),
+            FluidDram::fromCubicMeterValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toCubicMeterValue
+     */
+    public function testToCubicMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+            ->method('multiply')
+            ->with(42.0, 0.0000036966912)
+            ->willReturn(0.00015526103);
+
+        static::assertSame(0.00015526103, (new FluidDram(42.0, $arithmeticOperations))->toCubicMeterValue());
     }
 }

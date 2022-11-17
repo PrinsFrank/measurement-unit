@@ -23,24 +23,7 @@ class PintTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
-    {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::once())
-            ->method('multiply')
-            ->with(42.0, 0.000473176)
-            ->willReturn(0.019873392);
-
-        static::assertEquals(
-            new Pint(0.019873392, $arithmeticOperations),
-            Pint::fromCubicMeterValue(42.0, $arithmeticOperations)
-        );
-    }
-
-    /**
-     * @covers ::toCubicMeterValue
-     */
-    public function testToMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
@@ -48,6 +31,23 @@ class PintTest extends TestCase
             ->with(42.0, 0.000473176)
             ->willReturn(88761.8983211);
 
-        static::assertSame(88761.8983211, (new Pint(42.0, $arithmeticOperations))->toCubicMeterValue());
+        static::assertEquals(
+            new Pint(88761.8983211, $arithmeticOperations),
+            Pint::fromCubicMeterValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toCubicMeterValue
+     */
+    public function testToCubicMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+            ->method('multiply')
+            ->with(42.0, 0.000473176)
+            ->willReturn(0.019873392);
+
+        static::assertSame(0.019873392, (new Pint(42.0, $arithmeticOperations))->toCubicMeterValue());
     }
 }

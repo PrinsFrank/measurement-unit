@@ -22,7 +22,7 @@ class SpeedTest extends TestCase
     /** @dataProvider speedInstances */
     public function testReversibility(Speed $speed): void
     {
-        static::assertEquals($speed, $speed::fromMeterPerSecondValue($speed->toMeterPerSecondValue(), $speed->arithmeticOperations));
+        static::assertEqualsWithDelta($speed, $speed::fromMeterPerSecondValue($speed->toMeterPerSecondValue(), $speed->arithmeticOperations), 0.000001);
     }
 
     /** @return iterable<class-string<Speed>, array<Speed>> */

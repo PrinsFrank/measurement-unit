@@ -23,7 +23,7 @@ class CubicMeterTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
@@ -36,7 +36,7 @@ class CubicMeterTest extends TestCase
     /**
      * @covers ::toCubicMeterValue
      */
-    public function testToMeterPerSecondValue(): void
+    public function testToCubicMeterValue(): void
     {
         static::assertSame(42.0, (new CubicMeter(42.0, $this->createMock(ArithmeticOperations::class)))->toCubicMeterValue());
     }

@@ -23,16 +23,16 @@ class CubicInchTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-            ->method('multiply')
-            ->with(42.0, 61023.744095)
-            ->willReturn(2562997.25199);
+            ->method('divide')
+            ->with(42.0, 0.0000163871)
+            ->willReturn(2562991.62146);
 
         static::assertEquals(
-            new CubicInch(2562997.25199, $arithmeticOperations),
+            new CubicInch(2562991.62146, $arithmeticOperations),
             CubicInch::fromCubicMeterValue(42.0, $arithmeticOperations)
         );
     }
@@ -40,14 +40,14 @@ class CubicInchTest extends TestCase
     /**
      * @covers ::toCubicMeterValue
      */
-    public function testToMeterPerSecondValue(): void
+    public function testToCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-            ->method('divide')
-            ->with(42.0, 61023.744095)
-            ->willReturn(0.00068825668);
+            ->method('multiply')
+            ->with(42.0, 0.0000163871)
+            ->willReturn(0.0006882582);
 
-        static::assertSame(0.00068825668, (new CubicInch(42.0, $arithmeticOperations))->toCubicMeterValue());
+        static::assertSame(0.0006882582, (new CubicInch(42.0, $arithmeticOperations))->toCubicMeterValue());
     }
 }

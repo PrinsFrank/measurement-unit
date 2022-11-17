@@ -34,4 +34,12 @@ class TemperatureTest extends TestCase
             yield $temperatureFQN => [new $temperatureFQN(42.0)];
         }
     }
+
+    public function testCorrectConversionRate(): void
+    {
+        static::assertEqualsWithDelta(new Kelvin(315.15), (new Celsius(42.0))->toKelvin(), 0.000001);
+        static::assertEqualsWithDelta(new Kelvin(278.705555), (new Fahrenheit(42.0))->toKelvin(), 0.000001);
+        static::assertEqualsWithDelta(new Kelvin(42.0), (new Kelvin(42.0))->toKelvin(), 0.000001);
+        static::assertEqualsWithDelta(new Kelvin(23.333333), (new Rankine(42.0))->toKelvin(), 0.000001);
+    }
 }

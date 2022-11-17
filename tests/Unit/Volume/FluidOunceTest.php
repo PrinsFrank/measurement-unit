@@ -23,24 +23,7 @@ class FluidOunceTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
-    {
-        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::once())
-            ->method('multiply')
-            ->with(42.0, 0.00002957532596)
-            ->willReturn(0.00124216369);
-
-        static::assertEquals(
-            new FluidOunce(0.00124216369, $arithmeticOperations),
-            FluidOunce::fromCubicMeterValue(42.0, $arithmeticOperations)
-        );
-    }
-
-    /**
-     * @covers ::toCubicMeterValue
-     */
-    public function testToMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
@@ -48,6 +31,23 @@ class FluidOunceTest extends TestCase
             ->with(42.0, 0.00002957532596)
             ->willReturn(1420102.69157);
 
-        static::assertSame(1420102.69157, (new FluidOunce(42.0, $arithmeticOperations))->toCubicMeterValue());
+        static::assertEquals(
+            new FluidOunce(1420102.69157, $arithmeticOperations),
+            FluidOunce::fromCubicMeterValue(42.0, $arithmeticOperations)
+        );
+    }
+
+    /**
+     * @covers ::toCubicMeterValue
+     */
+    public function testToCubicMeterValue(): void
+    {
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        $arithmeticOperations->expects(self::once())
+            ->method('multiply')
+            ->with(42.0, 0.00002957532596)
+            ->willReturn(0.00124216369);
+
+        static::assertSame(0.00124216369, (new FluidOunce(42.0, $arithmeticOperations))->toCubicMeterValue());
     }
 }

@@ -23,16 +23,16 @@ class TableSpoonTest extends TestCase
     /**
      * @covers ::fromCubicMeterValue
      */
-    public function testFromMeterPerSecondValue(): void
+    public function testFromCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-            ->method('multiply')
-            ->with(42.0, 0.000015)
-            ->willReturn(0.00063);
+            ->method('divide')
+            ->with(42.0, 0.0000147868)
+            ->willReturn(2840371.14183);
 
         static::assertEquals(
-            new TableSpoon(0.00063, $arithmeticOperations),
+            new TableSpoon(2840371.14183, $arithmeticOperations),
             TableSpoon::fromCubicMeterValue(42.0, $arithmeticOperations)
         );
     }
@@ -40,14 +40,14 @@ class TableSpoonTest extends TestCase
     /**
      * @covers ::toCubicMeterValue
      */
-    public function testToMeterPerSecondValue(): void
+    public function testToCubicMeterValue(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-            ->method('divide')
-            ->with(42.0, 0.000015)
-            ->willReturn(2800000.0);
+            ->method('multiply')
+            ->with(42.0, 0.0000147868)
+            ->willReturn(0.0006210456);
 
-        static::assertSame(2800000.0, (new TableSpoon(42.0, $arithmeticOperations))->toCubicMeterValue());
+        static::assertSame(0.0006210456, (new TableSpoon(42.0, $arithmeticOperations))->toCubicMeterValue());
     }
 }

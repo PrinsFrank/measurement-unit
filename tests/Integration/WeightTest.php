@@ -22,7 +22,7 @@ class WeightTest extends TestCase
     /** @dataProvider weightInstances */
     public function testReversibility(Weight $weight): void
     {
-        static::assertEquals($weight, $weight::fromKilogramValue($weight->toKilogramValue(), $weight->arithmeticOperations));
+        static::assertEqualsWithDelta($weight, $weight::fromKilogramValue($weight->toKilogramValue(), $weight->arithmeticOperations), 0.000001);
     }
 
     /** @return iterable<class-string<Weight>, array<Weight>> */
@@ -31,5 +31,12 @@ class WeightTest extends TestCase
         foreach (self::WEIGHT_FQN_S as $weightFQN) {
             yield $weightFQN => [new $weightFQN(42.0)];
         }
+    }
+
+    public function testCorrectConversionRate(): void
+    {
+        static::assertEqualsWithDelta(new Kilogram(42.0), (new Kilogram(42.0))->toKilogram(), 0.000001);
+        static::assertEqualsWithDelta(new Kilogram(42000.0), (new MetricTon(42.0))->toKilogram(), 0.000001);
+        static::assertEqualsWithDelta(new Kilogram(19.050864), (new Pound(42.0))->toKilogram(), 0.000001);
     }
 }
