@@ -5,10 +5,10 @@ namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
-use PrinsFrank\MeasurementUnit\Length\Mile;
+use PrinsFrank\MeasurementUnit\Length\StatuteMile;
 
 /**
- * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\Mile
+ * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\StatuteMile
  */
 class MileTest extends TestCase
 {
@@ -17,7 +17,7 @@ class MileTest extends TestCase
      */
     public function testGetSymbol(): void
     {
-        static::assertSame('mi', Mile::getSymbol());
+        static::assertSame('mi', StatuteMile::getSymbol());
     }
 
     /**
@@ -32,8 +32,8 @@ class MileTest extends TestCase
                              ->willReturn(0.02609759007);
 
         static::assertEquals(
-            new Mile(0.02609759007, $arithmeticOperations),
-            Mile::fromMeterValue(42.0, $arithmeticOperations)
+            new StatuteMile(0.02609759007, $arithmeticOperations),
+            StatuteMile::fromMeterValue(42.0, $arithmeticOperations)
         );
     }
 
@@ -48,6 +48,6 @@ class MileTest extends TestCase
                              ->with(42.0, 1609.344)
                              ->willReturn(67592.448);
 
-        static::assertSame(67592.448, (new Mile(42.0, $arithmeticOperations))->toMeterValue());
+        static::assertSame(67592.448, (new StatuteMile(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

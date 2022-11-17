@@ -5,10 +5,10 @@ namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
-use PrinsFrank\MeasurementUnit\Length\StatuteMile;
+use PrinsFrank\MeasurementUnit\Length\SurveyMile;
 
 /**
- * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\StatuteMile
+ * @coversDefaultClass \PrinsFrank\MeasurementUnit\Length\SurveyMile
  */
 class StatuteMileTest extends TestCase
 {
@@ -17,7 +17,7 @@ class StatuteMileTest extends TestCase
      */
     public function testGetSymbol(): void
     {
-        static::assertSame('mi', StatuteMile::getSymbol());
+        static::assertSame('mi', SurveyMile::getSymbol());
     }
 
     /**
@@ -32,8 +32,8 @@ class StatuteMileTest extends TestCase
                              ->willReturn(0.02609753818);
 
         static::assertEquals(
-            new StatuteMile(0.02609753818, $arithmeticOperations),
-            StatuteMile::fromMeterValue(42.0, $arithmeticOperations)
+            new SurveyMile(0.02609753818, $arithmeticOperations),
+            SurveyMile::fromMeterValue(42.0, $arithmeticOperations)
         );
     }
 
@@ -48,6 +48,6 @@ class StatuteMileTest extends TestCase
                              ->with(42.0, 1609.3472)
                              ->willReturn(67592.5824);
 
-        static::assertSame(67592.5824, (new StatuteMile(42.0, $arithmeticOperations))->toMeterValue());
+        static::assertSame(67592.5824, (new SurveyMile(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

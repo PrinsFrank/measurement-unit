@@ -45,9 +45,9 @@ abstract class Length implements LengthInterface
         return $this->toUnit(Meter::class);
     }
 
-    public function toMile(): Mile
+    public function toStatuteMile(): StatuteMile
     {
-        return $this->toUnit(Mile::class);
+        return $this->toUnit(StatuteMile::class);
     }
 
     public function toNauticalMile(): NauticalMile
@@ -55,9 +55,9 @@ abstract class Length implements LengthInterface
         return $this->toUnit(NauticalMile::class);
     }
 
-    public function toStatuteMile(): StatuteMile
+    public function toSurveyMile(): SurveyMile
     {
-        return $this->toUnit(StatuteMile::class);
+        return $this->toUnit(SurveyMile::class);
     }
 
     public function toThou(): Thou

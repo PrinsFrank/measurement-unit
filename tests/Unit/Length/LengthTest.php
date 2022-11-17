@@ -14,9 +14,9 @@ use PrinsFrank\MeasurementUnit\Length\Inch;
 use PrinsFrank\MeasurementUnit\Length\Length;
 use PrinsFrank\MeasurementUnit\Length\LengthInterface;
 use PrinsFrank\MeasurementUnit\Length\Meter;
-use PrinsFrank\MeasurementUnit\Length\Mile;
-use PrinsFrank\MeasurementUnit\Length\NauticalMile;
 use PrinsFrank\MeasurementUnit\Length\StatuteMile;
+use PrinsFrank\MeasurementUnit\Length\NauticalMile;
+use PrinsFrank\MeasurementUnit\Length\SurveyMile;
 use PrinsFrank\MeasurementUnit\Length\Thou;
 use PrinsFrank\MeasurementUnit\Length\Yard;
 
@@ -86,9 +86,9 @@ class LengthTest extends TestCase
      * @covers ::toHorseLength
      * @covers ::toInch
      * @covers ::toMeter
-     * @covers ::toMile
-     * @covers ::toNauticalMile
      * @covers ::toStatuteMile
+     * @covers ::toNauticalMile
+     * @covers ::toSurveyMile
      * @covers ::toThou
      * @covers ::toYard
      */
@@ -122,9 +122,9 @@ class LengthTest extends TestCase
         static::assertEquals(new HorseLength(33.0, $arithmeticOperations), $length->toHorseLength());
         static::assertEquals(new Inch(33.0, $arithmeticOperations), $length->toInch());
         static::assertEquals(new Meter(21.0, $arithmeticOperations), $length->toMeter());
-        static::assertEquals(new Mile(33.0, $arithmeticOperations), $length->toMile());
-        static::assertEquals(new NauticalMile(33.0, $arithmeticOperations), $length->toNauticalMile());
         static::assertEquals(new StatuteMile(33.0, $arithmeticOperations), $length->toStatuteMile());
+        static::assertEquals(new NauticalMile(33.0, $arithmeticOperations), $length->toNauticalMile());
+        static::assertEquals(new SurveyMile(33.0, $arithmeticOperations), $length->toSurveyMile());
         static::assertEquals(new Thou(33.0, $arithmeticOperations), $length->toThou());
         static::assertEquals(new Yard(33.0, $arithmeticOperations), $length->toYard());
     }
