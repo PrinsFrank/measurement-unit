@@ -9,7 +9,10 @@
 ![PHP Version Support](https://img.shields.io/packagist/php-v/prinsfrank/measurement-unit)
 [![codecov](https://codecov.io/gh/PrinsFrank/measurement-unit/branch/main/graph/badge.svg?token=9O3VB563MU)](https://codecov.io/gh/PrinsFrank/measurement-unit)
 
-## Installation
+## Setup
+
+> **Note**
+> Make sure you are running PHP 8.1 or higher to use this package
 
 To use this package in your project, run the following command:
 
