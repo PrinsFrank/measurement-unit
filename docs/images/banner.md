@@ -12,4 +12,5 @@ Text Input: Measurement Unit
 Short description: A collection of measurement units for easy conversion and typed code (Weight, Volume, Length, Time, Speed & more!)
 Package manager: PHP/Composer
 Package name: prinsfrank/measurement-unit
+Image: Scale
 Watermark: no
