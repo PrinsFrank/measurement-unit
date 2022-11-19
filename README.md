@@ -14,7 +14,7 @@
 To use this package in your project, run the following command:
 
 ```shell
-composer require prinsfrank/measurument-unit
+composer require prinsfrank/measurement-unit
 ```
 
 ## Provided units
