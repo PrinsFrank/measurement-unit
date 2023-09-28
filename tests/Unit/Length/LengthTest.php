@@ -97,7 +97,7 @@ class LengthTest extends TestCase
     public function testToUnit(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::exactly(10))
+        $arithmeticOperations->expects(self::exactly(11))
             ->method('divide')
             ->willReturn(33.0);
 
