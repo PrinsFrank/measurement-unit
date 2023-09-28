@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PrinsFrank\MeasurementUnit\Tests\Unit\Speed;
+namespace PrinsFrank\MeasurementUnit\Tests\Unit\Length;
 
 use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
