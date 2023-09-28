@@ -11,6 +11,7 @@ use PrinsFrank\MeasurementUnit\Length\Foot;
 use PrinsFrank\MeasurementUnit\Length\Furlong;
 use PrinsFrank\MeasurementUnit\Length\HorseLength;
 use PrinsFrank\MeasurementUnit\Length\Inch;
+use PrinsFrank\MeasurementUnit\Length\Kilometer;
 use PrinsFrank\MeasurementUnit\Length\Length;
 use PrinsFrank\MeasurementUnit\Length\LengthInterface;
 use PrinsFrank\MeasurementUnit\Length\Meter;
@@ -91,6 +92,7 @@ class LengthTest extends TestCase
      * @covers ::toSurveyMile
      * @covers ::toThou
      * @covers ::toYard
+     * @covers ::toKilometer
      */
     public function testToUnit(): void
     {
@@ -127,6 +129,7 @@ class LengthTest extends TestCase
         static::assertEquals(new SurveyMile(33.0, $arithmeticOperations), $length->toSurveyMile());
         static::assertEquals(new Thou(33.0, $arithmeticOperations), $length->toThou());
         static::assertEquals(new Yard(33.0, $arithmeticOperations), $length->toYard());
+        static::assertEquals(new Kilometer(33.0, $arithmeticOperations), $length->toKilometer());
     }
 
     /**
