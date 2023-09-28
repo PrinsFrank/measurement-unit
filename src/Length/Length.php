@@ -40,6 +40,11 @@ abstract class Length implements LengthInterface
         return $this->toUnit(Inch::class);
     }
 
+    public function toKilometer(): Kilometer
+    {
+        return $this->toUnit(Kilometer::class);
+    }
+
     public function toMeter(): Meter
     {
         return $this->toUnit(Meter::class);
