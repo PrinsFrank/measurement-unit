@@ -25,7 +25,7 @@ abstract class Torque implements TorqueInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(string $fqn): Torque
+    public function toUnit(string $fqn): Torque
     {
         return $fqn::fromNewtonMeterValue($this->toNewtonMeterValue(), $this->arithmeticOperations);
     }
