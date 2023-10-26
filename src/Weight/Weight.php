@@ -35,7 +35,7 @@ abstract class Weight implements WeightInterface
      * @param class-string<T> $fqn
      * @return T
      */
-    protected function toUnit(string $fqn): Weight
+    public function toUnit(string $fqn): Weight
     {
         return $fqn::fromKilogramValue($this->toKilogramValue(), $this->arithmeticOperations);
     }
