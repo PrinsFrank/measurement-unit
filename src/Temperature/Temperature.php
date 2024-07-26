@@ -42,7 +42,10 @@ abstract class Temperature implements TemperatureInterface
      */
     public function toUnit(string $fqn): Temperature
     {
-        return $fqn::fromKelvinValue($this->toKelvinValue(), $this->arithmeticOperations);
+        /** @var T $unit */
+        $unit = $fqn::fromKelvinValue($this->toKelvinValue(), $this->arithmeticOperations);
+
+        return $unit;
     }
 
     public function __toString(): string
