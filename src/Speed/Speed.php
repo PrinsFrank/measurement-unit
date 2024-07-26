@@ -20,6 +20,11 @@ abstract class Speed implements SpeedInterface
         return $this->toUnit(KilometerPerHour::class);
     }
 
+    public function toKnot(): Knot
+    {
+        return $this->toUnit(Knot::class);
+    }
+
     public function toMeterPerSecond(): MeterPerSecond
     {
         return $this->toUnit(MeterPerSecond::class);

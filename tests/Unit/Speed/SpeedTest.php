@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
 use PrinsFrank\MeasurementUnit\Speed\KilometerPerHour;
+use PrinsFrank\MeasurementUnit\Speed\Knot;
 use PrinsFrank\MeasurementUnit\Speed\MeterPerSecond;
 use PrinsFrank\MeasurementUnit\Speed\MilesPerHour;
 use PrinsFrank\MeasurementUnit\Speed\Speed;
@@ -73,13 +74,14 @@ class SpeedTest extends TestCase
     /**
      * @covers ::toUnit
      * @covers ::toKilometerPerHour
+     * @covers ::toKnot
      * @covers ::toMeterPerSecond
      * @covers ::toMilesPerHour
      */
     public function testToUnit(): void
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
-        $arithmeticOperations->expects(self::exactly(2))
+        $arithmeticOperations->expects(self::exactly(3))
             ->method('divide')
             ->willReturn(33.0);
 
@@ -103,6 +105,7 @@ class SpeedTest extends TestCase
         static::assertEquals(new KilometerPerHour(33.0, $arithmeticOperations), $speed->toKilometerPerHour());
         static::assertEquals(new MeterPerSecond(21.0, $arithmeticOperations), $speed->toMeterPerSecond());
         static::assertEquals(new MilesPerHour(33.0, $arithmeticOperations), $speed->toMilesPerHour());
+        static::assertEquals(new Knot(33.0, $arithmeticOperations), $speed->toKnot());
     }
 
     /**
