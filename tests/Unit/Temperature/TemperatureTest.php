@@ -82,14 +82,14 @@ class TemperatureTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(2))
-                             ->method('subtract')
-                             ->willReturn(33.0);
+            ->method('subtract')
+            ->willReturn(33.0);
         $arithmeticOperations->expects(self::exactly(2))
-                             ->method('multiply')
-                             ->willReturn(33.0);
+            ->method('multiply')
+            ->willReturn(33.0);
         $arithmeticOperations->expects(self::exactly(2))
-                             ->method('divide')
-                             ->willReturn(33.0);
+            ->method('divide')
+            ->willReturn(33.0);
 
         $temperature = new class (42.0, $arithmeticOperations) extends Temperature {
             public static function getSymbol(): string

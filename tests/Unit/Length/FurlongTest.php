@@ -27,9 +27,9 @@ class FurlongTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 201.1680)
-                             ->willReturn(0.20878072059);
+            ->method('divide')
+            ->with(42.0, 201.1680)
+            ->willReturn(0.20878072059);
 
         static::assertEquals(
             new Furlong(0.20878072059, $arithmeticOperations),
@@ -44,9 +44,9 @@ class FurlongTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 201.1680)
-                             ->willReturn(8449.056);
+            ->method('multiply')
+            ->with(42.0, 201.1680)
+            ->willReturn(8449.056);
 
         static::assertSame(8449.056, (new Furlong(42.0, $arithmeticOperations))->toMeterValue());
     }

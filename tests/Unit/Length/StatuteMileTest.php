@@ -27,9 +27,9 @@ class StatuteMileTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 1609.3472)
-                             ->willReturn(0.02609753818);
+            ->method('divide')
+            ->with(42.0, 1609.3472)
+            ->willReturn(0.02609753818);
 
         static::assertEquals(
             new SurveyMile(0.02609753818, $arithmeticOperations),
@@ -44,9 +44,9 @@ class StatuteMileTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 1609.3472)
-                             ->willReturn(67592.5824);
+            ->method('multiply')
+            ->with(42.0, 1609.3472)
+            ->willReturn(67592.5824);
 
         static::assertSame(67592.5824, (new SurveyMile(42.0, $arithmeticOperations))->toMeterValue());
     }

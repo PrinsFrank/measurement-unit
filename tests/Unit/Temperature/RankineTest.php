@@ -27,13 +27,13 @@ class RankineTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 5)
-                             ->willReturn(8.4);
+            ->method('divide')
+            ->with(42.0, 5)
+            ->willReturn(8.4);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(8.4, 9)
-                             ->willReturn(75.6);
+            ->method('multiply')
+            ->with(8.4, 9)
+            ->willReturn(75.6);
 
         static::assertEquals(
             new Rankine(75.6, $arithmeticOperations),
@@ -48,13 +48,13 @@ class RankineTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 5)
-                             ->willReturn(210.0);
+            ->method('multiply')
+            ->with(42.0, 5)
+            ->willReturn(210.0);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(210.0, 9)
-                             ->willReturn(23.3333333333);
+            ->method('divide')
+            ->with(210.0, 9)
+            ->willReturn(23.3333333333);
 
         static::assertSame(23.3333333333, (new Rankine(42.0, $arithmeticOperations))->toKelvinValue());
     }

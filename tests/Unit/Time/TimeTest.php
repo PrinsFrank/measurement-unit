@@ -82,8 +82,8 @@ class TimeTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(3))
-                             ->method('divide')
-                             ->willReturn(33.0);
+            ->method('divide')
+            ->willReturn(33.0);
 
         $time = new class (42.0, $arithmeticOperations) extends Time {
             public static function getSymbol(): string
