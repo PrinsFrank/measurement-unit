@@ -27,9 +27,9 @@ class KilometerPerHourTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 0.277778)
-                             ->willReturn(151.19987904);
+            ->method('divide')
+            ->with(42.0, 0.277778)
+            ->willReturn(151.19987904);
 
         static::assertEquals(
             new KilometerPerHour(151.19987904, $arithmeticOperations),
@@ -44,9 +44,9 @@ class KilometerPerHourTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 0.277778)
-                             ->willReturn(11.666676);
+            ->method('multiply')
+            ->with(42.0, 0.277778)
+            ->willReturn(11.666676);
 
         static::assertSame(11.666676, (new KilometerPerHour(42.0, $arithmeticOperations))->toMeterPerSecondValue());
     }

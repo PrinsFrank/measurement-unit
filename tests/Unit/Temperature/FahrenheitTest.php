@@ -27,17 +27,17 @@ class FahrenheitTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42, 5)
-                             ->willReturn(8.4);
+            ->method('divide')
+            ->with(42, 5)
+            ->willReturn(8.4);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(8.4, 9)
-                             ->willReturn(75.6);
+            ->method('multiply')
+            ->with(8.4, 9)
+            ->willReturn(75.6);
         $arithmeticOperations->expects(self::once())
-                             ->method('subtract')
-                             ->with(75.6, 459.67)
-                             ->willReturn(-384.07);
+            ->method('subtract')
+            ->with(75.6, 459.67)
+            ->willReturn(-384.07);
 
         static::assertEquals(
             new Fahrenheit(-384.07, $arithmeticOperations),
@@ -52,17 +52,17 @@ class FahrenheitTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('add')
-                             ->with(42.0, 459.67)
-                             ->willReturn(501.67);
+            ->method('add')
+            ->with(42.0, 459.67)
+            ->willReturn(501.67);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(501.67, 5)
-                             ->willReturn(2508.35);
+            ->method('multiply')
+            ->with(501.67, 5)
+            ->willReturn(2508.35);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(2508.35, 9)
-                             ->willReturn(278.705555556);
+            ->method('divide')
+            ->with(2508.35, 9)
+            ->willReturn(278.705555556);
 
         static::assertSame(278.705555556, (new Fahrenheit(42.0, $arithmeticOperations))->toKelvinValue());
     }

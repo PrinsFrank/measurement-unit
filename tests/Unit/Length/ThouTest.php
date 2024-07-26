@@ -27,9 +27,9 @@ class ThouTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 0.0000254)
-                             ->willReturn(1653543.30709);
+            ->method('divide')
+            ->with(42.0, 0.0000254)
+            ->willReturn(1653543.30709);
 
         static::assertEquals(
             new Thou(1653543.30709, $arithmeticOperations),
@@ -44,9 +44,9 @@ class ThouTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 0.0000254)
-                             ->willReturn(0.0010668);
+            ->method('multiply')
+            ->with(42.0, 0.0000254)
+            ->willReturn(0.0010668);
 
         static::assertSame(0.0010668, (new Thou(42.0, $arithmeticOperations))->toMeterValue());
     }

@@ -27,9 +27,9 @@ class FootTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 0.3048)
-                             ->willReturn(137.795275591);
+            ->method('divide')
+            ->with(42.0, 0.3048)
+            ->willReturn(137.795275591);
 
         static::assertEquals(
             new Foot(137.795275591, $arithmeticOperations),
@@ -44,9 +44,9 @@ class FootTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 0.3048)
-                             ->willReturn(12.8016);
+            ->method('multiply')
+            ->with(42.0, 0.3048)
+            ->willReturn(12.8016);
 
         static::assertSame(12.8016, (new Foot(42.0, $arithmeticOperations))->toMeterValue());
     }

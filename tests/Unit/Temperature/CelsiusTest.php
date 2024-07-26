@@ -27,9 +27,9 @@ class CelsiusTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('subtract')
-                             ->with(42.0, 273.15)
-                             ->willReturn(-231.15);
+            ->method('subtract')
+            ->with(42.0, 273.15)
+            ->willReturn(-231.15);
 
         static::assertEquals(
             new Celsius(-231.15, $arithmeticOperations),

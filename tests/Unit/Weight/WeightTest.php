@@ -80,8 +80,8 @@ class WeightTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(2))
-                             ->method('divide')
-                             ->willReturn(33.0);
+            ->method('divide')
+            ->willReturn(33.0);
 
         $speed = new class (42.0, $arithmeticOperations) extends Weight {
             public static function getSymbol(): string

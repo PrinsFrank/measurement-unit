@@ -92,8 +92,8 @@ class VolumeTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(8))
-                             ->method('divide')
-                             ->willReturn(33.0);
+            ->method('divide')
+            ->willReturn(33.0);
 
         $volume = new class (42.0, $arithmeticOperations) extends Volume {
             public static function getSymbol(): string

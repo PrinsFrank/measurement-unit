@@ -27,9 +27,9 @@ class InchTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 0.0254)
-                             ->willReturn(1653.54330709);
+            ->method('divide')
+            ->with(42.0, 0.0254)
+            ->willReturn(1653.54330709);
 
         static::assertEquals(
             new Inch(1653.54330709, $arithmeticOperations),
@@ -44,9 +44,9 @@ class InchTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 0.0254)
-                             ->willReturn(1.0668);
+            ->method('multiply')
+            ->with(42.0, 0.0254)
+            ->willReturn(1.0668);
 
         static::assertSame(1.0668, (new Inch(42.0, $arithmeticOperations))->toMeterValue());
     }

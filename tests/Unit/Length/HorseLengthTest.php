@@ -27,9 +27,9 @@ class HorseLengthTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 2.4)
-                             ->willReturn(17.5);
+            ->method('divide')
+            ->with(42.0, 2.4)
+            ->willReturn(17.5);
 
         static::assertEquals(
             new Horselength(17.5, $arithmeticOperations),
@@ -44,9 +44,9 @@ class HorseLengthTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 2.4)
-                             ->willReturn(100.8);
+            ->method('multiply')
+            ->with(42.0, 2.4)
+            ->willReturn(100.8);
 
         static::assertSame(100.8, (new HorseLength(42.0, $arithmeticOperations))->toMeterValue());
     }

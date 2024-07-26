@@ -27,9 +27,9 @@ class NauticalMileTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 1852)
-                             ->willReturn(0.02267818574);
+            ->method('divide')
+            ->with(42.0, 1852)
+            ->willReturn(0.02267818574);
 
         static::assertEquals(
             new NauticalMile(0.02267818574, $arithmeticOperations),
@@ -44,9 +44,9 @@ class NauticalMileTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 1852)
-                             ->willReturn(77784.0);
+            ->method('multiply')
+            ->with(42.0, 1852)
+            ->willReturn(77784.0);
 
         static::assertSame(77784.0, (new NauticalMile(42.0, $arithmeticOperations))->toMeterValue());
     }

@@ -27,9 +27,9 @@ class YardTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('divide')
-                             ->with(42.0, 0.9144)
-                             ->willReturn(45.9317585302);
+            ->method('divide')
+            ->with(42.0, 0.9144)
+            ->willReturn(45.9317585302);
 
         static::assertEquals(
             new Yard(45.9317585302, $arithmeticOperations),
@@ -44,9 +44,9 @@ class YardTest extends TestCase
     {
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
-                             ->method('multiply')
-                             ->with(42.0, 0.9144)
-                             ->willReturn(38.4048);
+            ->method('multiply')
+            ->with(42.0, 0.9144)
+            ->willReturn(38.4048);
 
         static::assertSame(38.4048, (new Yard(42.0, $arithmeticOperations))->toMeterValue());
     }
