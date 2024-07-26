@@ -37,7 +37,10 @@ abstract class Speed implements SpeedInterface
      */
     public function toUnit(string $fqn): Speed
     {
-        return $fqn::fromMeterPerSecondValue($this->toMeterPerSecondValue(), $this->arithmeticOperations);
+        /** @var T $unit */
+        $unit = $fqn::fromMeterPerSecondValue($this->toMeterPerSecondValue(), $this->arithmeticOperations);
+
+        return $unit;
     }
 
     public function __toString(): string

@@ -10,7 +10,6 @@ interface WeightInterface extends MeasurementUnit
 {
     public static function getSymbol(): string;
 
-    /** @return static */
     public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): self;
 
     public function toKilogramValue(): float;

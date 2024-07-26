@@ -42,7 +42,10 @@ abstract class Time implements TimeInterface
      */
     public function toUnit(string $fqn): Time
     {
-        return $fqn::fromSecondValue($this->toSecondValue(), $this->arithmeticOperations);
+        /** @var T $unit */
+        $unit = $fqn::fromSecondValue($this->toSecondValue(), $this->arithmeticOperations);
+
+        return $unit;
     }
 
     public function __toString(): string

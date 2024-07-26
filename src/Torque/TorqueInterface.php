@@ -10,7 +10,6 @@ interface TorqueInterface extends MeasurementUnit
 {
     public static function getSymbol(): string;
 
-    /** @return static */
     public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self;
 
     public function toNewtonMeterValue(): float;

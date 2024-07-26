@@ -37,7 +37,10 @@ abstract class Weight implements WeightInterface
      */
     public function toUnit(string $fqn): Weight
     {
-        return $fqn::fromKilogramValue($this->toKilogramValue(), $this->arithmeticOperations);
+        /** @var T $unit */
+        $unit = $fqn::fromKilogramValue($this->toKilogramValue(), $this->arithmeticOperations);
+
+        return $unit;
     }
 
     public function __toString(): string

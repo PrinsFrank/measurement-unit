@@ -9,7 +9,6 @@ interface SpeedInterface
 {
     public static function getSymbol(): string;
 
-    /** @return static */
     public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self;
 
     public function toMeterPerSecondValue(): float;

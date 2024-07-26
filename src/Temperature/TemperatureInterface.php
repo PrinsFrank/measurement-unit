@@ -10,7 +10,6 @@ interface TemperatureInterface extends MeasurementUnit
 {
     public static function getSymbol(): string;
 
-    /** @return static */
     public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): self;
 
     public function toKelvinValue(): float;
