@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [ opened, synchronize ]
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '55 17 * * *'
+
+jobs:
+  quality:
+    uses: prinsfrank/CI-PHP/.github/workflows/quality.yml@main
+    with:
+      PHP_VERSION: '8.2'
+      PHP_VERSIONS: '["8.1", "8.2"]'
+    secrets: inherit

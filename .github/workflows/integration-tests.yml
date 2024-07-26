@@ -4,7 +4,11 @@ on:
   push:
     branches: [ main ]
   pull_request:
+    types: [ opened, synchronize ]
     branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '55 17 * * *'
 
 jobs:
   unit-tests:
