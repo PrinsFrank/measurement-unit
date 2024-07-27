@@ -25,7 +25,7 @@ composer require prinsfrank/measurement-unit
 | Type        | Available unit                                                                                                |
 |-------------|---------------------------------------------------------------------------------------------------------------|
 | Length      | Fathom, Foot, Furlong, HorseLength, Inch, Meter, Kilometer, NauticalMile, StatuteMile, SurveyMile, Thou, Yard |
-| Speed       | KilometerPerHour, MeterPerSecond, MilesPerHour                                                                |
+| Speed       | KilometerPerHour, Knot, MeterPerSecond, MilesPerHour                                                          |
 | Temperature | Celsius, Fahrenheit, Kelvin, Rankine                                                                          |
 | Time        | Day, Hour, Minute, Second                                                                                     |
 | Torque      | NewtonMeter                                                                                                   |
