@@ -14,7 +14,7 @@
         }
     },
     "require": {
-        "php": "^8.1 || ^8.2 || ^8.3",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
         "prinsfrank/arithmetic-operations-implementation": "^0.1",
         "prinsfrank/arithmetic-operations-floating-point": "^0.1.2",
         "prinsfrank/arithmetic-operations": "^0.1.0"
