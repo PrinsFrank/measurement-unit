@@ -1,34 +1,30 @@
 {
-    "name": "prinsfrank/measurement-unit",
+    "name": "",
+    "description": "",
     "type": "library",
     "license": "MIT",
-    "description": "A collection of measurement units for easy conversion",
     "autoload": {
         "psr-4": {
-            "PrinsFrank\\MeasurementUnit\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PrinsFrank\\MeasurementUnit\\Tests\\": "tests/"
         }
     },
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
-        "prinsfrank/arithmetic-operations-implementation": "^0.1",
-        "prinsfrank/arithmetic-operations-floating-point": "^0.1.2",
-        "prinsfrank/arithmetic-operations": "^0.1.0"
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "friendsofphp/php-cs-fixer": "^3.12",
-        "phpstan/phpstan": "^1.9",
-        "phpstan/phpstan-phpunit": "^1.2"
+        "friendsofphp/php-cs-fixer": "^3.59.3",
+        "phpunit/phpunit": "^11.2.2",
+        "phpstan/phpstan": "^1.11.5",
+        "composer/composer": "^2.7.7",
+        "phpstan/phpstan-strict-rules": "^1.6"
     },
     "scripts": {
         "cs": "php-cs-fixer fix --allow-risky=yes --dry-run",
         "cs:fix": "php-cs-fixer fix --allow-risky=yes",
-        "stan": "phpstan analyse",
+        "stan": "phpstan analyse -v --memory-limit 4G",
         "unit": "phpunit --testsuite=Unit",
         "integration": "phpunit --testsuite=Integration",
         "test": [

@@ -1,13 +1,12 @@
 # Composer
-/vendor
-/composer.lock
+/vendor/
+composer.lock
 
 # PHPUnit
-.phpunit.result.cache
 coverage.xml
 
-#PHPCSFixer
-.php-cs-fixer.cache
+# IDE
+.idea
 
-#editors
-/.idea
+# Local cache directory
+/cache

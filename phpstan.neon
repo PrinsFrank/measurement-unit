@@ -1,9 +1,28 @@
 parameters:
+    tmpDir: ./cache/.phpstan.result.cache
     level: 9
     paths:
         - src
         - tests
+    phpVersion: 80100 # Lowest currently supported version
+    exceptions:
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
+        implicitThrows: false
+        uncheckedExceptionClasses:
+            - 'PHPUnit\Framework\Exception'
+            - 'PHPUnit\Event\Exception'
+            - 'PHPUnit\Framework\MockObject\Exception'
+            - 'ReflectionException'
+            - 'SebastianBergmann\RecursionContext\InvalidArgumentException'
+    treatPhpDocTypesAsCertain: false
+    checkBenevolentUnionTypes: true
+    reportPossiblyNonexistentGeneralArrayOffset: true
+    reportPossiblyNonexistentConstantArrayOffset: true
+    reportWrongPhpDocTypeInVarTag: true
+    reportAnyTypeWideningInVarTag: true
+    checkMissingOverrideMethodAttribute: true
 includes:
-    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
-    - vendor/phpstan/phpstan-phpunit/extension.neon
-    - vendor/phpstan/phpstan-phpunit/rules.neon
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
