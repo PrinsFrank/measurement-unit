@@ -1,0 +1,13 @@
+name: Sync from Template
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '55 18 * * *'
+
+jobs:
+  quality:
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: prinsfrank/CI-PHP/.github/workflows/template-sync.yml@main
