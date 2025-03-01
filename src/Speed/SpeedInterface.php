@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace PrinsFrank\MeasurementUnit\Speed;
 
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
+use PrinsFrank\MeasurementUnit\MeasurementUnit;
 
-interface SpeedInterface
+interface SpeedInterface extends MeasurementUnit
 {
     public static function getSymbol(): string;
 
