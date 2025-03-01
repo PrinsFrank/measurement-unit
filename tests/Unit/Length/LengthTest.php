@@ -154,6 +154,6 @@ class LengthTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $length->__toString());
+        static::assertSame('42 foo', $length->__toString());
     }
 }

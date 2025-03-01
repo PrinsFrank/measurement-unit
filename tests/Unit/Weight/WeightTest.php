@@ -127,6 +127,6 @@ class WeightTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $weight->__toString());
+        static::assertSame('42 foo', $weight->__toString());
     }
 }

@@ -118,6 +118,6 @@ class TorqueTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $torque->__toString());
+        static::assertSame('42 foo', $torque->__toString());
     }
 }

@@ -45,6 +45,6 @@ abstract class Weight implements WeightInterface
 
     public function __toString(): string
     {
-        return $this->value . static::getSymbol();
+        return $this->value . " " . static::getSymbol();
     }
 }

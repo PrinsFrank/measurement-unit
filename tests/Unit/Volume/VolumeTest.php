@@ -145,6 +145,6 @@ class VolumeTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $volume->__toString());
+        static::assertSame('42 foo', $volume->__toString());
     }
 }

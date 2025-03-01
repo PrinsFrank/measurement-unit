@@ -50,6 +50,6 @@ abstract class Speed implements SpeedInterface
 
     public function __toString(): string
     {
-        return $this->value . static::getSymbol();
+        return $this->value . " " . static::getSymbol();
     }
 }
