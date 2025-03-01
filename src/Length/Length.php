@@ -90,6 +90,6 @@ abstract class Length implements LengthInterface
 
     public function __toString(): string
     {
-        return $this->value . static::getSymbol();
+        return $this->value . " " . static::getSymbol();
     }
 }

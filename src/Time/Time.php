@@ -50,6 +50,6 @@ abstract class Time implements TimeInterface
 
     public function __toString(): string
     {
-        return $this->value . static::getSymbol();
+        return $this->value . " " . static::getSymbol();
     }
 }

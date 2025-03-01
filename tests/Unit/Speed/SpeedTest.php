@@ -130,6 +130,6 @@ class SpeedTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $speed->__toString());
+        static::assertSame('42 foo', $speed->__toString());
     }
 }

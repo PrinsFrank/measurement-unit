@@ -136,6 +136,6 @@ class TemperatureTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $temperature->__toString());
+        static::assertSame('42 foo', $temperature->__toString());
     }
 }

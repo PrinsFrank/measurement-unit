@@ -130,6 +130,6 @@ class TimeTest extends TestCase
             }
         };
 
-        static::assertSame('42foo', $time->__toString());
+        static::assertSame('42 foo', $time->__toString());
     }
 }

@@ -35,6 +35,6 @@ abstract class Torque implements TorqueInterface
 
     public function __toString(): string
     {
-        return $this->value . static::getSymbol();
+        return $this->value . " " . static::getSymbol();
     }
 }
