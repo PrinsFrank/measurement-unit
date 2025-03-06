@@ -22,14 +22,15 @@ composer require prinsfrank/measurement-unit
 
 ## Provided units
 
-| Type        | Available unit                                                                                                |
-|-------------|---------------------------------------------------------------------------------------------------------------|
-| Length      | Fathom, Foot, Furlong, HorseLength, Inch, Meter, Kilometer, NauticalMile, StatuteMile, SurveyMile, Thou, Yard |
-| Speed       | KilometerPerHour, Knot, MeterPerSecond, MilesPerHour                                                          |
-| Temperature | Celsius, Fahrenheit, Kelvin, Rankine                                                                          |
-| Time        | Day, Hour, Minute, Second                                                                                     |
-| Torque      | NewtonMeter                                                                                                   |
-| Volume      | CubicInch, CubicMeter, CubicYard, FluidDram, FluidOunce, Liter, Pint, Quart, TableSpoon                       |
-| Weight      | Kilogram, MetricTon, Pound                                                                                    |
+| Type        | Available unit                                                                                                    |
+|-------------|-------------------------------------------------------------------------------------------------------------------|
+| Length      | Fathom, Foot, Furlong, HorseLength, Inch, Meter, Kilometer, NauticalMile, StatuteMile, SurveyMile, Thou, Yard     |
+| Pressure    | Bar, Hectopascal, Kilopascal, Millibar, MillimetreOfMercury, Pascal, PoundPerSquareInch, StandardAtmosphere, Torr | 
+| Speed       | KilometerPerHour, Knot, MeterPerSecond, MilesPerHour                                                              |
+| Temperature | Celsius, Fahrenheit, Kelvin, Rankine                                                                              |
+| Time        | Day, Hour, Minute, Second                                                                                         |
+| Torque      | NewtonMeter                                                                                                       |
+| Volume      | CubicInch, CubicMeter, CubicYard, FluidDram, FluidOunce, Liter, Pint, Quart, TableSpoon                           |
+| Weight      | Kilogram, MetricTon, Pound                                                                                        |
 
 All the units of a type can be converted to each other with corresponding methods.
