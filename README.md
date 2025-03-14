@@ -24,7 +24,7 @@ composer require prinsfrank/measurement-unit
 
 | Type        | Available unit                                                                                                    |
 |-------------|-------------------------------------------------------------------------------------------------------------------|
-| Length      | Fathom, Foot, Furlong, HorseLength, Inch, Meter, Kilometer, NauticalMile, StatuteMile, SurveyMile, Thou, Yard     |
+| Length      | Centimeter, Fathom, Foot, Furlong, HorseLength, Inch, Kilometer, Meter, Millimeter, NauticalMile, StatuteMile, SurveyMile, Thou, Yard     |
 | Pressure    | Bar, Hectopascal, Kilopascal, Millibar, MillimetreOfMercury, Pascal, PoundPerSquareInch, StandardAtmosphere, Torr | 
 | Speed       | KilometerPerHour, Knot, MeterPerSecond, MilesPerHour                                                              |
 | Temperature | Celsius, Fahrenheit, Kelvin, Rankine                                                                              |

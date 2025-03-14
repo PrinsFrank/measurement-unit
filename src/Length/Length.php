@@ -15,6 +15,11 @@ abstract class Length implements LengthInterface
         $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
     }
 
+    public function toCentimeter(): Centimeter
+    {
+        return $this->toUnit(Centimeter::class);
+    }
+
     public function toFathom(): Fathom
     {
         return $this->toUnit(Fathom::class);
@@ -48,6 +53,11 @@ abstract class Length implements LengthInterface
     public function toMeter(): Meter
     {
         return $this->toUnit(Meter::class);
+    }
+
+    public function toMillimeter(): Millimeter
+    {
+        return $this->toUnit(Millimeter::class);
     }
 
     public function toStatuteMile(): StatuteMile
