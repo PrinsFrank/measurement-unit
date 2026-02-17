@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Celsius extends Temperature
 {
-    public static function getSymbol(): string
-    {
-        return '°C';
-    }
+    protected static string $defaultSymbol = '°C';
 
     public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

@@ -23,11 +23,12 @@ class SpeedTest extends TestCase
      */
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $speed                = new class (42.0, $arithmeticOperations) extends Speed {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): SpeedInterface
@@ -53,7 +54,7 @@ class SpeedTest extends TestCase
         $speed = new class (42.0) extends Speed {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): SpeedInterface
@@ -80,6 +81,7 @@ class SpeedTest extends TestCase
      */
     public function testToUnit(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(3))
             ->method('divide')
@@ -116,7 +118,7 @@ class SpeedTest extends TestCase
         $speed = new class (42.0) extends Speed {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): SpeedInterface
@@ -130,6 +132,6 @@ class SpeedTest extends TestCase
             }
         };
 
-        static::assertSame('42 foo', $speed->__toString());
+        static::assertSame('42 unit', $speed->__toString());
     }
 }

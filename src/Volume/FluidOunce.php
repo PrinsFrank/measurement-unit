@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class FluidOunce extends Volume
 {
-    public static function getSymbol(): string
-    {
-        return 'fl oz';
-    }
+    protected static string $defaultSymbol = 'fl oz';
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

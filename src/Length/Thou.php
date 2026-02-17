@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Thou extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'thou';
-    }
+    protected static string $defaultSymbol = 'thou';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class MetricTon extends Weight
 {
-    public static function getSymbol(): string
-    {
-        return 't';
-    }
+    protected static string $defaultSymbol = 't';
 
     public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

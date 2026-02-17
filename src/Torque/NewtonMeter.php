@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class NewtonMeter extends Torque
 {
-    public static function getSymbol(): string
-    {
-        return 'N⋅m';
-    }
+    protected static string $defaultSymbol = 'N⋅m';
 
     public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

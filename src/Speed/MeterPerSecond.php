@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class MeterPerSecond extends Speed
 {
-    public static function getSymbol(): string
-    {
-        return 'm/s';
-    }
+    protected static string $defaultSymbol = 'm/s';
 
     public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

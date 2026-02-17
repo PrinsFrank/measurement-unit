@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class KilometerPerHour extends Speed
 {
-    public static function getSymbol(): string
-    {
-        return 'km/h';
-    }
+    protected static string $defaultSymbol = 'km/h';
 
     public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

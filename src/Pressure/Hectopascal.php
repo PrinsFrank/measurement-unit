@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Hectopascal extends Pressure
 {
-    public static function getSymbol(): string
-    {
-        return 'hPa';
-    }
+    protected static string $defaultSymbol = 'hPa';
 
     public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

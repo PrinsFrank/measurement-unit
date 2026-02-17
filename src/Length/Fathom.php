@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Fathom extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'ftm';
-    }
+    protected static string $defaultSymbol = 'ftm';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

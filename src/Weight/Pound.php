@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Pound extends Weight
 {
-    public static function getSymbol(): string
-    {
-        return 'lb';
-    }
+    protected static string $defaultSymbol = 'lb';
 
     public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

@@ -27,7 +27,7 @@ class TemperatureTest extends TestCase
         $temperature               = new class (42.0, $arithmeticOperations) extends Temperature {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): TemperatureInterface
@@ -53,7 +53,7 @@ class TemperatureTest extends TestCase
         $temperature = new class (42.0) extends Temperature {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): TemperatureInterface
@@ -80,6 +80,7 @@ class TemperatureTest extends TestCase
      */
     public function testToUnit(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(2))
             ->method('subtract')
@@ -122,7 +123,7 @@ class TemperatureTest extends TestCase
         $temperature = new class (42.0) extends Temperature {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): TemperatureInterface
@@ -136,6 +137,6 @@ class TemperatureTest extends TestCase
             }
         };
 
-        static::assertSame('42 foo', $temperature->__toString());
+        static::assertSame('42 unit', $temperature->__toString());
     }
 }

@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class MillimetreOfMercury extends Pressure
 {
-    public static function getSymbol(): string
-    {
-        return 'mmHg';
-    }
+    protected static string $defaultSymbol = 'mmHg';
 
     public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

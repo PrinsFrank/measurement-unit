@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Knot extends Speed
 {
-    public static function getSymbol(): string
-    {
-        return 'kn';
-    }
+    protected static string $defaultSymbol = 'kn';
 
     public static function fromMeterPerSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

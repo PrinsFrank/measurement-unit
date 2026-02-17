@@ -5,11 +5,10 @@ namespace PrinsFrank\MeasurementUnit\Time;
 
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\MeasurementUnit\MeasurementUnit;
+use PrinsFrank\MeasurementUnit\MeasurementUnitInterface;
 
-interface TimeInterface extends MeasurementUnit
+interface TimeInterface extends MeasurementUnitInterface
 {
-    public static function getSymbol(): string;
-
     public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self;
 
     public function toSecondValue(): float;

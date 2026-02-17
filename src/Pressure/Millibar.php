@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Millibar extends Pressure
 {
-    public static function getSymbol(): string
-    {
-        return 'mbar';
-    }
+    protected static string $defaultSymbol = 'mbar';
 
     public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

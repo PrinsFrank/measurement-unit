@@ -28,11 +28,12 @@ class VolumeTest extends TestCase
      */
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $volume               = new class (42.0, $arithmeticOperations) extends Volume {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): VolumeInterface
@@ -58,7 +59,7 @@ class VolumeTest extends TestCase
         $volume = new class (42.0) extends Volume {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): VolumeInterface
@@ -90,6 +91,7 @@ class VolumeTest extends TestCase
      */
     public function testToUnit(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(8))
             ->method('divide')
@@ -131,7 +133,7 @@ class VolumeTest extends TestCase
         $volume = new class (42.0) extends Volume {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): VolumeInterface
@@ -145,6 +147,6 @@ class VolumeTest extends TestCase
             }
         };
 
-        static::assertSame('42 foo', $volume->__toString());
+        static::assertSame('42 unit', $volume->__toString());
     }
 }

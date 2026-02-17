@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class FluidDram extends Volume
 {
-    public static function getSymbol(): string
-    {
-        return 'dr';
-    }
+    protected static string $defaultSymbol = 'fl dr';
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

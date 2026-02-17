@@ -25,6 +25,7 @@ class CelsiusTest extends TestCase
      */
     public function testFromKelvinValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('subtract')
@@ -42,6 +43,7 @@ class CelsiusTest extends TestCase
      */
     public function testToKelvinValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('add')

@@ -22,11 +22,12 @@ class WeightTest extends TestCase
      */
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $weight               = new class (42.0, $arithmeticOperations) extends Weight {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): WeightInterface
@@ -52,7 +53,7 @@ class WeightTest extends TestCase
         $weight = new class (42.0) extends Weight {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): WeightInterface
@@ -78,6 +79,7 @@ class WeightTest extends TestCase
      */
     public function testToUnit(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(2))
             ->method('divide')
@@ -113,7 +115,7 @@ class WeightTest extends TestCase
         $weight = new class (42.0) extends Weight {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): WeightInterface
@@ -127,6 +129,6 @@ class WeightTest extends TestCase
             }
         };
 
-        static::assertSame('42 foo', $weight->__toString());
+        static::assertSame('42 unit', $weight->__toString());
     }
 }

@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class PoundPerSquareInch extends Pressure
 {
-    public static function getSymbol(): string
-    {
-        return 'psi';
-    }
+    protected static string $defaultSymbol = 'psi';
 
     public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

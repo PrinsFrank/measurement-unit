@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Yard extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'yd';
-    }
+    protected static string $defaultSymbol = 'yd';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

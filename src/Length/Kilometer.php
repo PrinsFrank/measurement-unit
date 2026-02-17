@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Kilometer extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'km';
-    }
+    protected static string $defaultSymbol = 'km';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

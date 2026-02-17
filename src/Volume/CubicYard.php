@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class CubicYard extends Volume
 {
-    public static function getSymbol(): string
-    {
-        return 'yd3';
-    }
+    protected static string $defaultSymbol = 'yd³';
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

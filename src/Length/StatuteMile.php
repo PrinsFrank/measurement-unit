@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class StatuteMile extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'mi';
-    }
+    protected static string $defaultSymbol = 'mi';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

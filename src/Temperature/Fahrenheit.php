@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Fahrenheit extends Temperature
 {
-    public static function getSymbol(): string
-    {
-        return '°F';
-    }
+    protected static string $defaultSymbol = '°F';
 
     public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

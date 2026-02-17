@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Minute extends Time
 {
-    public static function getSymbol(): string
-    {
-        return 'm';
-    }
+    protected static string $defaultSymbol = 'min';
 
     public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Quart extends Volume
 {
-    public static function getSymbol(): string
-    {
-        return 'qt';
-    }
+    protected static string $defaultSymbol = 'qt';
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

@@ -20,11 +20,12 @@ class TorqueTest extends TestCase
      */
     public function testConstructWithSuppliedArithmeticOperationsInstance(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $torque               = new class (42.0, $arithmeticOperations) extends Torque {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): TorqueInterface
@@ -50,7 +51,7 @@ class TorqueTest extends TestCase
         $torque = new class (42.0) extends Torque {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): TorqueInterface
@@ -74,6 +75,7 @@ class TorqueTest extends TestCase
      */
     public function testToUnit(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
         $torque = new class (42.0, $arithmeticOperations) extends Torque {
@@ -104,7 +106,7 @@ class TorqueTest extends TestCase
         $torque = new class (42.0) extends Torque {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromNewtonMeterValue(float $value, ArithmeticOperations $arithmeticOperations): TorqueInterface
@@ -118,6 +120,6 @@ class TorqueTest extends TestCase
             }
         };
 
-        static::assertSame('42 foo', $torque->__toString());
+        static::assertSame('42 unit', $torque->__toString());
     }
 }

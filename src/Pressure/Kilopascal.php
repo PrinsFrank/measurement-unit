@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Kilopascal extends Pressure
 {
-    public static function getSymbol(): string
-    {
-        return 'kPa';
-    }
+    protected static string $defaultSymbol = 'kPa';
 
     public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

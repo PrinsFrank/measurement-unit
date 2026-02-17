@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class TableSpoon extends Volume
 {
-    public static function getSymbol(): string
-    {
-        return 'tbsp';
-    }
+    protected static string $defaultSymbol = 'tbsp';
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

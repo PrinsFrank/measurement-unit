@@ -17,7 +17,7 @@ class FluidDramTest extends TestCase
      */
     public function testGetSymbol(): void
     {
-        static::assertSame('dr', FluidDram::getSymbol());
+        static::assertSame('fl dr', FluidDram::getSymbol());
     }
 
     /**
@@ -25,6 +25,7 @@ class FluidDramTest extends TestCase
      */
     public function testFromCubicMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('divide')
@@ -42,6 +43,7 @@ class FluidDramTest extends TestCase
      */
     public function testToCubicMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('multiply')

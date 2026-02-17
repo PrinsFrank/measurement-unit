@@ -3,18 +3,10 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Volume;
 
-use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\MeasurementUnit;
 
-abstract class Volume implements VolumeInterface
+abstract class Volume extends MeasurementUnit implements VolumeInterface
 {
-    public readonly ArithmeticOperations $arithmeticOperations;
-
-    public function __construct(public readonly float $value, ?ArithmeticOperations $arithmeticOperations = null)
-    {
-        $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
-    }
-
     public function toCubicInch(): CubicInch
     {
         return $this->toUnit(CubicInch::class);
@@ -71,10 +63,5 @@ abstract class Volume implements VolumeInterface
         $unit = $fqn::fromCubicMeterValue($this->toCubicMeterValue(), $this->arithmeticOperations);
 
         return $unit;
-    }
-
-    public function __toString(): string
-    {
-        return $this->value . " " . static::getSymbol();
     }
 }

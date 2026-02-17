@@ -11,3 +11,11 @@ coverage.xml
 
 #editors
 /.idea
+/.vscode
+
+# macOS
+.DS_Store
+
+# Local
+/_dev
+/examples

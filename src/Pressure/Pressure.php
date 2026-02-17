@@ -3,18 +3,10 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Pressure;
 
-use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\MeasurementUnit;
 
-abstract class Pressure implements PressureInterface
+abstract class Pressure extends MeasurementUnit implements PressureInterface
 {
-    public readonly ArithmeticOperations $arithmeticOperations;
-
-    public function __construct(public readonly float $value, ?ArithmeticOperations $arithmeticOperations = null)
-    {
-        $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
-    }
-
     public function toBar(): Bar
     {
         return $this->toUnit(Bar::class);
@@ -71,10 +63,5 @@ abstract class Pressure implements PressureInterface
         $unit = $fqn::fromPascalValue($this->toPascalValue(), $this->arithmeticOperations);
 
         return $unit;
-    }
-
-    public function __toString(): string
-    {
-        return $this->value . " " . static::getSymbol();
     }
 }

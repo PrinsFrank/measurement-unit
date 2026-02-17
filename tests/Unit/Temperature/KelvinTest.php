@@ -25,6 +25,7 @@ class KelvinTest extends TestCase
      */
     public function testFromKelvinValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
         static::assertEquals(

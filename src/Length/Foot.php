@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Foot extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'ft';
-    }
+    protected static string $defaultSymbol = 'ft';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

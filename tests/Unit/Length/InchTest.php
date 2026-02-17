@@ -15,9 +15,9 @@ class InchTest extends TestCase
     /**
      * @covers ::getSymbol
      */
-    public function testGetSymbol(): void
+    public function testgetSymbol(): void
     {
-        static::assertSame('″', Inch::getSymbol());
+        static::assertSame('in', Inch::getSymbol());
     }
 
     /**
@@ -25,6 +25,7 @@ class InchTest extends TestCase
      */
     public function testFromMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('divide')
@@ -42,6 +43,7 @@ class InchTest extends TestCase
      */
     public function testToMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('multiply')

@@ -25,6 +25,7 @@ class KilogramTest extends TestCase
      */
     public function testFromMeterPerSecondValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
         static::assertEquals(

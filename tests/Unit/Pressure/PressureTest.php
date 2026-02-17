@@ -32,7 +32,7 @@ class PressureTest extends TestCase
         $pressure               = new class (42.0, $arithmeticOperations) extends Pressure {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): PressureInterface
@@ -58,7 +58,7 @@ class PressureTest extends TestCase
         $pressure = new class (42.0) extends Pressure {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): PressureInterface
@@ -90,6 +90,7 @@ class PressureTest extends TestCase
      */
     public function testToUnit(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::exactly(8))
             ->method('divide')
@@ -131,7 +132,7 @@ class PressureTest extends TestCase
         $pressure = new class (42.0) extends Pressure {
             public static function getSymbol(): string
             {
-                return 'foo';
+                return 'unit';
             }
 
             public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): PressureInterface
@@ -145,6 +146,6 @@ class PressureTest extends TestCase
             }
         };
 
-        static::assertSame('42 foo', $pressure->__toString());
+        static::assertSame('42 unit', $pressure->__toString());
     }
 }

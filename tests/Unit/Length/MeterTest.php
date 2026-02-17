@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Tests\Unit\Length;
@@ -15,7 +16,7 @@ class MeterTest extends TestCase
     /**
      * @covers ::getSymbol
      */
-    public function testGetSymbol(): void
+    public function testgetSymbol(): void
     {
         static::assertSame('m', Meter::getSymbol());
     }
@@ -25,6 +26,7 @@ class MeterTest extends TestCase
      */
     public function testFromMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
         static::assertEquals(
@@ -38,6 +40,8 @@ class MeterTest extends TestCase
      */
     public function testToMeterValue(): void
     {
-        static::assertSame(42.0, (new Meter(42.0, $this->createMock(ArithmeticOperations::class)))->toMeterValue());
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        static::assertSame(42.0, (new Meter(42.0, $arithmeticOperations))->toMeterValue());
     }
 }

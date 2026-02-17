@@ -17,7 +17,7 @@ class CubicMeterTest extends TestCase
      */
     public function testGetSymbol(): void
     {
-        static::assertSame('m3', CubicMeter::getSymbol());
+        static::assertSame('m³', CubicMeter::getSymbol());
     }
 
     /**
@@ -25,6 +25,7 @@ class CubicMeterTest extends TestCase
      */
     public function testFromCubicMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
         static::assertEquals(

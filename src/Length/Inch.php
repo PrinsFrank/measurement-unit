@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Inch extends Length
 {
-    public static function getSymbol(): string
-    {
-        return '″';
-    }
+    protected static string $defaultSymbol = 'in';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

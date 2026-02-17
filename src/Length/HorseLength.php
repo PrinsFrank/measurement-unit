@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class HorseLength extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'horse-length';
-    }
+    protected static string $defaultSymbol = 'hl';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

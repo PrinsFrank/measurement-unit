@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class StandardAtmosphere extends Pressure
 {
-    public static function getSymbol(): string
-    {
-        return 'atm';
-    }
+    protected static string $defaultSymbol = 'atm';
 
     public static function fromPascalValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

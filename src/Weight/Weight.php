@@ -3,18 +3,10 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Weight;
 
-use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\MeasurementUnit;
 
-abstract class Weight implements WeightInterface
+abstract class Weight extends MeasurementUnit implements WeightInterface
 {
-    public readonly ArithmeticOperations $arithmeticOperations;
-
-    public function __construct(public readonly float $value, ?ArithmeticOperations $arithmeticOperations = null)
-    {
-        $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
-    }
-
     public function toKilogram(): Kilogram
     {
         return $this->toUnit(Kilogram::class);
@@ -41,10 +33,5 @@ abstract class Weight implements WeightInterface
         $unit = $fqn::fromKilogramValue($this->toKilogramValue(), $this->arithmeticOperations);
 
         return $unit;
-    }
-
-    public function __toString(): string
-    {
-        return $this->value . " " . static::getSymbol();
     }
 }

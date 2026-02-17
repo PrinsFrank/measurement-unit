@@ -25,6 +25,7 @@ class NewtonMeterTest extends TestCase
      */
     public function testFromNewtonMeter(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
         static::assertEquals(

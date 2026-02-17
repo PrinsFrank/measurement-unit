@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Liter extends Volume
 {
-    public static function getSymbol(): string
-    {
-        return 'l';
-    }
+    protected static string $defaultSymbol = 'l';
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

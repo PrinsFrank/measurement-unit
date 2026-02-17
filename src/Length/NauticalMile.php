@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class NauticalMile extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'nmi';
-    }
+    protected static string $defaultSymbol = 'nmi';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

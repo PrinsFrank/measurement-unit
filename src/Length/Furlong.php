@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Furlong extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'for';
-    }
+    protected static string $defaultSymbol = 'fur';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

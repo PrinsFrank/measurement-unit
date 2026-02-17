@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class CubicInch extends Volume
 {
-    public static function getSymbol(): string
-    {
-        return 'in3';
-    }
+    protected static string $defaultSymbol = 'in³';
 
     public static function fromCubicMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

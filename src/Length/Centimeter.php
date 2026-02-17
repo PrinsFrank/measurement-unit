@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Centimeter extends Length
 {
-    public static function getSymbol(): string
-    {
-        return 'cm';
-    }
+    protected static string $defaultSymbol = 'cm';
 
     public static function fromMeterValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

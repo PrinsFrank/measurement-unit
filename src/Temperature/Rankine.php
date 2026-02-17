@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Rankine extends Temperature
 {
-    public static function getSymbol(): string
-    {
-        return '°R';
-    }
+    protected static string $defaultSymbol = '°R';
 
     public static function fromKelvinValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

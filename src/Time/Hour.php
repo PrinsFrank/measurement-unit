@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Hour extends Time
 {
-    public static function getSymbol(): string
-    {
-        return 'h';
-    }
+    protected static string $defaultSymbol = 'h';
 
     public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

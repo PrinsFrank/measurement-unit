@@ -3,18 +3,10 @@ declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Torque;
 
-use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
-use PrinsFrank\ArithmeticOperationsFloatingPoint\ArithmeticOperationsFloatingPoint;
+use PrinsFrank\MeasurementUnit\MeasurementUnit;
 
-abstract class Torque implements TorqueInterface
+abstract class Torque extends MeasurementUnit implements TorqueInterface
 {
-    public readonly ArithmeticOperations $arithmeticOperations;
-
-    public function __construct(public readonly float $value, ?ArithmeticOperations $arithmeticOperations = null)
-    {
-        $this->arithmeticOperations = $arithmeticOperations ?? new ArithmeticOperationsFloatingPoint();
-    }
-
     public function toNewtonMeter(): NewtonMeter
     {
         return $this->toUnit(NewtonMeter::class);
@@ -31,10 +23,5 @@ abstract class Torque implements TorqueInterface
         $unit = $fqn::fromNewtonMeterValue($this->toNewtonMeterValue(), $this->arithmeticOperations);
 
         return $unit;
-    }
-
-    public function __toString(): string
-    {
-        return $this->value . " " . static::getSymbol();
     }
 }

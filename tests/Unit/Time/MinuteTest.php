@@ -17,7 +17,7 @@ class MinuteTest extends TestCase
      */
     public function testGetSymbol(): void
     {
-        static::assertSame('m', Minute::getSymbol());
+        static::assertSame('min', Minute::getSymbol());
     }
 
     /**
@@ -25,6 +25,7 @@ class MinuteTest extends TestCase
      */
     public function testFromSecondValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('divide')
@@ -42,6 +43,7 @@ class MinuteTest extends TestCase
      */
     public function testToSecondValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('multiply')

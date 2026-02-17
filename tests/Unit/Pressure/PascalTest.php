@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace PrinsFrank\MeasurementUnit\Tests\Unit\Pressure;
@@ -25,6 +26,7 @@ class PascalTest extends TestCase
      */
     public function testFromPascalValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
 
         static::assertEquals(
@@ -38,6 +40,8 @@ class PascalTest extends TestCase
      */
     public function testToPascalValue(): void
     {
-        static::assertSame(42.0, (new Pascal(42.0, $this->createMock(ArithmeticOperations::class)))->toPascalValue());
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
+        $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
+        static::assertSame(42.0, (new Pascal(42.0, $arithmeticOperations))->toPascalValue());
     }
 }

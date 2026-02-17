@@ -15,7 +15,7 @@ class YardTest extends TestCase
     /**
      * @covers ::getSymbol
      */
-    public function testGetSymbol(): void
+    public function testgetSymbol(): void
     {
         static::assertSame('yd', Yard::getSymbol());
     }
@@ -25,6 +25,7 @@ class YardTest extends TestCase
      */
     public function testFromMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('divide')
@@ -42,6 +43,7 @@ class YardTest extends TestCase
      */
     public function testToMeterValue(): void
     {
+        /** @var ArithmeticOperations&\PHPUnit\Framework\MockObject\MockObject $arithmeticOperations */
         $arithmeticOperations = $this->createMock(ArithmeticOperations::class);
         $arithmeticOperations->expects(self::once())
             ->method('multiply')

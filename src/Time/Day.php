@@ -7,10 +7,7 @@ use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 
 class Day extends Time
 {
-    public static function getSymbol(): string
-    {
-        return 'd';
-    }
+    protected static string $defaultSymbol = 'd';
 
     public static function fromSecondValue(float $value, ArithmeticOperations $arithmeticOperations): self
     {

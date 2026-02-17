@@ -5,11 +5,10 @@ namespace PrinsFrank\MeasurementUnit\Weight;
 
 use PrinsFrank\ArithmeticOperations\ArithmeticOperations;
 use PrinsFrank\MeasurementUnit\MeasurementUnit;
+use PrinsFrank\MeasurementUnit\MeasurementUnitInterface;
 
-interface WeightInterface extends MeasurementUnit
+interface WeightInterface extends MeasurementUnitInterface
 {
-    public static function getSymbol(): string;
-
     public static function fromKilogramValue(float $value, ArithmeticOperations $arithmeticOperations): self;
 
     public function toKilogramValue(): float;
